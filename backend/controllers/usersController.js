@@ -36,7 +36,8 @@ const registerUser = asyncHnadler( async(req,res)=>{
             firstname : user.Fname,
             lastname : user.Lname,
             Phone : user.Phone,
-            Email : user.Email
+            Email : user.Email,
+            token : TokenGenerator(user.id)
         })
     } else {
         res.status(400)
@@ -53,13 +54,21 @@ const loginUser = asyncHnadler(async(req,res)=>{
             firstname : user.Fname,
             lastname : user.Lname,
             Phone : user.Phone,
-            Email : user.Email
+            Email : user.Email,
+            token : TokenGenerator(user.id)
         })
     }else{
         res.status(400)
         throw new Error('invalid info')
     }
 })
+
+// Generate JWT
+const TokenGenerator = (id)=>{
+    return jwt.sign( {id},process.env.JWT_SECRET,{
+        expiresIn:'40d'
+    } )
+}
 
 
 module.exports = {
