@@ -62,6 +62,10 @@ const loginUser = asyncHnadler(async(req,res)=>{
         throw new Error('invalid info')
     }
 })
+const getMe =asyncHnadler( async(req,res) => {
+    const {id,Fname,Lname,Email,Phone} = await User.findById(req.user.id)
+    res.json({id,Fname,Lname,Email,Phone})
+})
 
 // Generate JWT
 const TokenGenerator = (id)=>{
@@ -72,5 +76,5 @@ const TokenGenerator = (id)=>{
 
 
 module.exports = {
-    loginUser,registerUser
+    loginUser,registerUser,getMe
 }
