@@ -1,13 +1,11 @@
 const mongoose = require('mongoose')
 const travelSchema = mongoose.Schema({
-    Fname : String,
-    Lname : String,
-    Phone : Number,
-    Email : {type : String ,required :true, unique :true },
-    Password : String
-
-},{
-    timestamps : true
+    cityStart :{type : String ,required : true},
+    cityEnd : {type : String ,required : true},
+    dateStart :{type : String ,required : true},
+    Prix : Number,
+    breakPoints : {type : Array, required : false},
+    deleted : {type : Boolean , default:false}
 })
 
 module.exports = mongoose.model('travels',travelSchema)

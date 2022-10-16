@@ -11,6 +11,8 @@ const port = process.env.PORT
 app.use(express.json())
 app.use(express.urlencoded( {extended : false} ))
 
+// Routes
+
 app.use('/api/users',require('./routes/usersRoute'))
 app.use('/api/travel',require('./routes/travelRoute'))
 app.use(errorHandler)
