@@ -8,7 +8,6 @@ const getTravel = asyncHnadler(async(req,res) =>{
 
 const setTravel = asyncHnadler(async (req,res) =>{
     const {cityStart,cityEnd,dateStart,Prix,breakPoints} = req.body
-    console.log(cityStart,cityEnd,dateStart,Prix,breakPoints);
 
     if (!cityStart || !cityEnd || !dateStart || !Prix) {
         res.status(400)
