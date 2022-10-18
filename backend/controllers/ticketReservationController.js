@@ -2,7 +2,12 @@ const asyncHnadler = require('express-async-handler')
 const Ticket = require('../models/ticketReservationModel')
 
 const getTicket = asyncHnadler(async(req,res) =>{
-    const ticket = await Ticket.find({})
+
+    const ticket = await Ticket.find({deleted:false})
+    res.json({ticket})
+})
+const getMyTickets = asyncHnadler(async(req,res) =>{ 
+    const ticket = await Ticket.find({_id : req.params.id , deleted:false})
     res.json({ticket})
 })
 
@@ -55,5 +60,6 @@ module.exports = {
     getTicket,
     setTicket,
     updateTicket,
-    deleteTicket
+    deleteTicket,
+    getMyTickets
 }
