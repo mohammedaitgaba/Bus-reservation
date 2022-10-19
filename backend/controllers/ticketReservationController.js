@@ -3,16 +3,17 @@ const Ticket = require('../models/ticketReservationModel')
 
 const getTicket = asyncHnadler(async(req,res) =>{
 
-    const ticket = await Ticket.find({deleted:false})
+    const ticket = await Ticket.find({deleted:false}).populate('travels')
     res.json({ticket})
 })
 const getMyTickets = asyncHnadler(async(req,res) =>{ 
-    const ticket = await Ticket.find({_id : req.params.id , deleted:false})
+    const ticket = await Ticket.findById(req.params.id).populate('travels')
+    // const ticket = await Ticket.find({_id : req.params.id , deleted:false})
     res.json({ticket})
 })
 
 const setTicket = asyncHnadler(async(req,res) =>{
-    const {ville_depart,ville_destination,date_depart,prix} = req.body
+    const {ville_depart,ville_destination,date_depart,travel,prix} = req.body
     console.log(req.body);
     if (!ville_depart || !ville_destination || !date_depart || !prix) {
         res.status(400)
@@ -22,6 +23,7 @@ const setTicket = asyncHnadler(async(req,res) =>{
         ville_depart,
         ville_destination,
         date_depart,
+        travel,
         prix
     })
     if (ticket) {  

@@ -7,9 +7,9 @@ const getTravel = asyncHnadler(async(req,res) =>{
 }) 
 
 const setTravel = asyncHnadler(async (req,res) =>{
-    const {cityStart,cityEnd,dateStart,Prix,breakPoints} = req.body
+    const {cityStart,cityEnd,dateStart,Price,breakPoints} = req.body
 
-    if (!cityStart || !cityEnd || !dateStart || !Prix) {
+    if (!cityStart || !cityEnd || !dateStart || !Price) {
         res.status(400)
         throw new Error('Please fill all the champs')
     }
@@ -17,7 +17,7 @@ const setTravel = asyncHnadler(async (req,res) =>{
         cityStart,
         cityEnd,
         dateStart,
-        Prix,
+        Price,
         breakPoints
     }
         )
@@ -29,6 +29,22 @@ const setTravel = asyncHnadler(async (req,res) =>{
 
     }
 })
+// const newBreakCity = asyncHnadler(async(req, res)=>{
+//     const cityBreak = req.body
+//     const id = req.params.id
+//     console.log(cityBreak);
+//     console.log(req.params.id);
+//     const travel = await Travel.findById(req.params.id)
+//     if (!travel) {
+//         throw new Error('Travel not found')
+//     } 
+//     else {
+//         const insertedBreak = await Travel.findByIdAndUpdate({id},{
+//             $push:{breakPoints : cityBreak} 
+//         },done)
+//         res.json({breakPoints:travel.breakPoints})
+//     }
+// })
 
 const updateTravel =asyncHnadler( async(req,res) =>{
     const travel = await Travel.findById(req.params.id)
@@ -57,5 +73,6 @@ module.exports = {
     getTravel,
     setTravel,
     updateTravel,
-    deleteTravel
+    deleteTravel,
+    // newBreakCity
 }

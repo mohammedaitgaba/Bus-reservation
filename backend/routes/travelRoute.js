@@ -4,13 +4,12 @@ const {
     getTravel,
     setTravel,
     updateTravel,
-    deleteTravel
+    deleteTravel,
+    // newBreakCity
  } = require('../controllers/travelController')
 
 router.route('/').get(getTravel).post(setTravel)
 router.route('/:id').put(updateTravel).delete(deleteTravel)
-
-
-
+// .post(newBreakCity)
 
 module.exports = router

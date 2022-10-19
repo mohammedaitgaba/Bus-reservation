@@ -16,10 +16,16 @@ const ticketReservationSchema = mongoose.Schema({
         type:Number , 
         required : true
     },
+    travels: {
+        type: mongoose.Schema.Types.ObjectId, 
+        ref: "travels"
+    },
+
     deleted : {
         type:Boolean,
         default : false
     }
 })
 
+const ticket = mongoose.model('ticket',ticketReservationSchema)
 module.exports = mongoose.model('ticket',ticketReservationSchema)

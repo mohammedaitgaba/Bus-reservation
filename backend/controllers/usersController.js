@@ -70,7 +70,7 @@ const getMe =asyncHnadler( async(req,res) => {
 // Generate JWT
 const TokenGenerator = (id)=>{
     return jwt.sign( {id},process.env.JWT_SECRET,{
-        expiresIn:'40d'
+        expiresIn:'10h'
     } )
 }
 

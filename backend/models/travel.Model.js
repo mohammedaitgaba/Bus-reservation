@@ -12,15 +12,18 @@ const travelSchema = mongoose.Schema({
         type : Date ,
         required : true
     },
-    Prix : Number,
-    breakPoints : {
-        type : Array,
-         required : false
-        },
+    Price : {
+        type : Number,
+        required : true
+    },
+    Bus : {
+        type: mongoose.Schema.Types.ObjectId, 
+        ref: "bus"
+    },
     deleted : {
         type : Boolean , 
         default:false
     }
 })
-
+const travels = mongoose.model("travels", travelSchema)
 module.exports = mongoose.model('travels',travelSchema)
