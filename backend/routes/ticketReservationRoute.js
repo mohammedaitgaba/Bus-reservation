@@ -1,5 +1,6 @@
 const express = require('express')
 const router = express.Router()
+const {protect} = require('../middleware/authMiddlware')
 const {
     getTicket,
     setTicket,
@@ -9,6 +10,6 @@ const {
 } = require('../controllers/ticketReservationController')
 
 router.route('/').get(getTicket).post(setTicket)
-router.route('/:id').get(getMyTickets).put(updateTicket).delete(deleteTicket)
+router.route('/:id').get(protect,getMyTickets).put(updateTicket).delete(deleteTicket)
 
 module.exports = router

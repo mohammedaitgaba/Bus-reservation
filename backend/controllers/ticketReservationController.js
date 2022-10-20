@@ -3,36 +3,34 @@ const Ticket = require('../models/ticketReservationModel')
 
 const getTicket = asyncHnadler(async(req,res) =>{
 
-    const ticket = await Ticket.find({deleted:false}).populate('travels')
+    const ticket = await Ticket.find({deleted:false}).populate('travel').populate('user','Fname Lname')
     res.json({ticket})
 })
 const getMyTickets = asyncHnadler(async(req,res) =>{ 
-    const ticket = await Ticket.findById(req.params.id).populate('travels')
+    const ticket = await Ticket.find({user:req.user.id}).populate('travels').populate('user','Fname Lname')
     // const ticket = await Ticket.find({_id : req.params.id , deleted:false})
     res.json({ticket})
 })
 
 const setTicket = asyncHnadler(async(req,res) =>{
-    const {ville_depart,ville_destination,date_depart,travel,prix} = req.body
-    console.log(req.body);
-    if (!ville_depart || !ville_destination || !date_depart || !prix) {
-        res.status(400)
-        throw new Error('all the champs are required')
-    }
-    const ticket = await Ticket.create({
-        ville_depart,
-        ville_destination,
-        date_depart,
+    const {travel,user} = req.body
+    // if (!travel||!user) {
+    //     throw new Error("Not found")
+    // }
+
+    const ticket = Ticket.create({
         travel,
-        prix
+        user
     })
-    if (ticket) {  
-        res.json({message : "succesfuly created"})
+    if (ticket) {
+        
+        res.json({message: "ticket has been ceated succesfully"})
+        // this.getTicket
     }
     else{
-        throw new Error('invalid data')
-
+        throw new Error('data error')
     }
+
     
 })
 

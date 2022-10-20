@@ -1,13 +1,23 @@
 const asyncHnadler = require('express-async-handler')
 const Travel = require('../models/travel.Model')
 
-const getTravel = asyncHnadler(async(req,res) =>{
-    const travel =  await Travel.find({deleted:false})
+const getAllTravels = asyncHnadler(async(req,res) =>{
+    const travel =  await Travel.find({deleted:false}).populate('Bus')
     res.json({travel})
-}) 
+})
+const checkTravel = asyncHnadler(async(req,res)=> {
+    const {cityStart,cityEnd} = req.params
+    const travel = await Travel.find({cityStart: cityStart,cityEnd : cityEnd}).populate('Bus')
+    if (travel.length == 0) {
+        throw new Error('Travel not found')
+    }
+    else{
+        res.json({travel})
+    }
+})
 
 const setTravel = asyncHnadler(async (req,res) =>{
-    const {cityStart,cityEnd,dateStart,Price,breakPoints} = req.body
+    const {cityStart,cityEnd,dateStart,Price,Bus} = req.body
 
     if (!cityStart || !cityEnd || !dateStart || !Price) {
         res.status(400)
@@ -18,7 +28,8 @@ const setTravel = asyncHnadler(async (req,res) =>{
         cityEnd,
         dateStart,
         Price,
-        breakPoints
+        Bus,
+        // breakPoints
     }
         )
         if (travel) {  
@@ -70,9 +81,10 @@ const deleteTravel =asyncHnadler(async (req,res) =>{
 })
 
 module.exports = {
-    getTravel,
+    getAllTravels,
     setTravel,
     updateTravel,
     deleteTravel,
+    checkTravel,
     // newBreakCity
 }

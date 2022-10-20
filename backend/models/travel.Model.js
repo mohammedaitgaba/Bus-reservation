@@ -25,5 +25,5 @@ const travelSchema = mongoose.Schema({
         default:false
     }
 })
-const travels = mongoose.model("travels", travelSchema)
+// const travels = mongoose.model("travels", travelSchema)
 module.exports = mongoose.model('travels',travelSchema)

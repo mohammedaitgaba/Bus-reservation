@@ -1,24 +1,12 @@
 const mongoose = require('mongoose')
 const ticketReservationSchema = mongoose.Schema({
-    ville_depart : {
-        type:String , 
-        required : true
-    },
-    ville_destination : {
-        type:String ,
-         required : true
-        },
-    date_depart : {
-        type:Date , 
-        required : true
-    },
-    prix : {
-        type:Number , 
-        required : true
-    },
-    travels: {
+    travel:{
         type: mongoose.Schema.Types.ObjectId, 
         ref: "travels"
+    },
+    user:{
+        type: mongoose.Schema.Types.ObjectId, 
+        ref: "users"
     },
 
     deleted : {
@@ -27,5 +15,5 @@ const ticketReservationSchema = mongoose.Schema({
     }
 })
 
-const ticket = mongoose.model('ticket',ticketReservationSchema)
+// const ticket = mongoose.model('ticket',ticketReservationSchema)
 module.exports = mongoose.model('ticket',ticketReservationSchema)
