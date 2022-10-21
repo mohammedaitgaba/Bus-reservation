@@ -11,3 +11,21 @@ Cette solution fait recours aux matériels informatiques et aux logiciels approp
 **Database:** Mongo DB 
 
 **ODM:** Mongoose
+
+## API Reference
+
+## user Endpoints
+
+| Method    | Endpoint     | Description                |
+| :-------- | :------- | :------------------------- |
+| GET | http://localhost:5000/api/users/me | getUser |
+| POST | http://localhost:5000/api/users/login | loginUser |
+| POST | http://localhost:5000/api/users/register | RegisterUser |
+
+## Ticket Endpoints
+
+| Method    | Endpoint     | Description                |
+| :-------- | :------- | :------------------------- |
+| GET | http://localhost:5000/api/ticket | getTicket |
+| POST | http://localhost:5000/api/ticket | setTicket |
+| DELETE | http://localhost:5000/api/ticket/:id | deleteTicket (soft delete) |
