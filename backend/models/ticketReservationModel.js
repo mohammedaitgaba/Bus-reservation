@@ -12,7 +12,12 @@ const ticketReservationSchema = mongoose.Schema({
     deleted : {
         type:Boolean,
         default : false
+    },
+    confirmed : {
+        type : Boolean,
+        default : false
     }
+
 })
 
 // const ticket = mongoose.model('ticket',ticketReservationSchema)

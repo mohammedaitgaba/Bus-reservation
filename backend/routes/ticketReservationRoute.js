@@ -6,10 +6,19 @@ const {
     setTicket,
     updateTicket,
     deleteTicket,
-    getMyTickets
+    getMyTickets,
+    confirmTicket
 } = require('../controllers/ticketReservationController')
 
-router.route('/').get(getTicket).post(setTicket)
-router.route('/:id').get(protect,getMyTickets).put(updateTicket).delete(deleteTicket)
+router.route('/')
+.get(getTicket)
+.post(setTicket)
+router
+.post('/confirmTicket',confirmTicket)
+router
+.route('/:id')
+.get(protect,getMyTickets)
+.put(updateTicket)
+.delete(deleteTicket)
 
 module.exports = router

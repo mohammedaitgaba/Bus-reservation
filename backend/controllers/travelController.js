@@ -19,10 +19,8 @@ const checkTravel = asyncHnadler(async(req,res)=> {
 const setTravel = asyncHnadler(async (req,res) =>{
     const {cityStart,cityEnd,dateStart,Price,Bus} = req.body
 
-    if (!cityStart || !cityEnd || !dateStart || !Price) {
-        res.status(400)
-        throw new Error('Please fill all the champs')
-    }
+   (!cityStart || !cityEnd || !dateStart || !Price)  ?  res.status(400) : Error('Please fill all the champs')
+    
     const travel = await Travel.create({
         cityStart,
         cityEnd,
@@ -32,13 +30,9 @@ const setTravel = asyncHnadler(async (req,res) =>{
         // breakPoints
     }
         )
-        if (travel) {  
-            res.json({message : "created"})
-        }
-        else{
-        throw new Error('invalid data')
+        travel ? res.json({message : "created"}) : Error('invalid data')
 
-    }
+    
 })
 // const newBreakCity = asyncHnadler(async(req, res)=>{
 //     const cityBreak = req.body

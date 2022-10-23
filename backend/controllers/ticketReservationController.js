@@ -1,9 +1,13 @@
 const asyncHnadler = require('express-async-handler')
+const { populate } = require('../models/ticketReservationModel')
 const Ticket = require('../models/ticketReservationModel')
+const Bus = require('../models/busModel')
 
 const getTicket = asyncHnadler(async(req,res) =>{
 
-    const ticket = await Ticket.find({deleted:false}).populate('travel').populate('user','Fname Lname')
+    const ticket = await Ticket.find({deleted:false})
+    .populate({ path:'travel',populate :{ path:'Bus'}})
+    .populate('user','Fname Lname')
     res.json({ticket})
 })
 const getMyTickets = asyncHnadler(async(req,res) =>{ 
@@ -14,18 +18,12 @@ const getMyTickets = asyncHnadler(async(req,res) =>{
 
 const setTicket = asyncHnadler(async(req,res) =>{
     const {travel,user} = req.body
-    // if (!travel||!user) {
-    //     throw new Error("Not found")
-    // }
-
     const ticket = Ticket.create({
         travel,
         user
     })
     if (ticket) {
-        
         res.json({message: "ticket has been ceated succesfully"})
-        // this.getTicket
     }
     else{
         throw new Error('data error')
@@ -33,6 +31,18 @@ const setTicket = asyncHnadler(async(req,res) =>{
 
     
 })
+
+const confirmTicket = asyncHnadler(async(req,res)=> {
+    const {Bus_id} =req.body
+    const bus = await Bus.findById(Bus_id)
+    if (bus.capacity > 0) {
+        await Bus.findByIdAndUpdate(Bus_id, { $set: {capacity: bus.capacity -1 } })
+        res.json({message : "reserved seccesfully"})
+    }else{
+        throw new Error('this travel is already full')
+    }
+})
+
 
 const updateTicket = asyncHnadler( async(req,res) =>{
     const ticket = await Ticket.findById(req.params.id)
@@ -61,5 +71,6 @@ module.exports = {
     setTicket,
     updateTicket,
     deleteTicket,
-    getMyTickets
+    getMyTickets,
+    confirmTicket
 }
