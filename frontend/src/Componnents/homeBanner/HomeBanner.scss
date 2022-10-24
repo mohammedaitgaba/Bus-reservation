@@ -72,3 +72,35 @@
       }
    }
 }
+.Why_us_Holder{
+   @include flexColumn(center,space-around);
+   width: 100%;
+   padding: 40px 0;
+   .WhyUs_title{
+      font-size: 32px;
+      font-weight: 600;
+   }
+   .Cards{
+      @include flexRow(center,space-around);
+      width: 80%;
+      padding-top: 15px;
+      
+      .WhyUs_Card{
+         @include flexColumn(center,space-evenly);
+         text-align: center;
+         border-radius: 20px;
+         padding: 15px;
+         width: 30%;
+         height: 55vh;
+         box-shadow: rgba(17, 17, 26, 0.05) 0px 1px 0px, rgba(17, 17, 26, 0.1) 0px 0px 8px;
+         img{
+            width: 60px;
+         }
+         .card_title{
+            font-size: 18px;
+            font-weight: 700;
+            padding: 5px 0;
+         }
+      }
+   }
+}

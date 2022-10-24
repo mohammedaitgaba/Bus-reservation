@@ -44,6 +44,48 @@ function HomeBanner() {
 
         </div>
       </section>
+
+      <section className='Why_us_Holder'>
+        <div className="WhyUs_title">
+         Pourquoi voyager avec nous
+        </div>
+        <div className="Cards">
+
+          <div className="WhyUs_Card">
+            <img src={`${process.env.PUBLIC_URL}/images/EasyIcon.png`} alt="" />
+            <div className="card_title">
+              facile de réserver
+            </div>
+            <div className="card_description">
+            Avec notre processus de réservation rapide, facile & sûr, <br/> 
+            vous pouvez réserver le meilleur bus en toute confiance.
+            </div>
+          </div>
+
+          <div className="WhyUs_Card">
+            <img src={`${process.env.PUBLIC_URL}/images/priceIcon.png`} alt="" />
+            <div className="card_title">
+              Connaître le prix avant de partir
+            </div>
+            <div className="card_description">
+            Découvrez les meilleures offres, comparez les caractéristiques et économisez 
+            de l'argent sur votre prochaine location de bus.
+            </div>
+          </div>
+          <div className="WhyUs_Card">
+            <img src={`${process.env.PUBLIC_URL}/images/BusIcon.png`} alt="" />
+            <div className="card_title">
+
+            Grande collection d'autobus
+            </div>
+            <div className="card_description">
+              Comme nous élargissons constamment notre base de fournisseurs,<br />
+              vous verrez une augmentation constante des bus disponibles.
+            </div>
+          </div>
+        </div>
+        
+      </section>
     </div>
   )
 }

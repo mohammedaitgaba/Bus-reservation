@@ -20,9 +20,10 @@ body{
     }
     .Header_links {
         @include flexRow(center,space-between); 
-        width: 40%;
+        width: 35%;
         .links{
             @include flexRow(center,space-between); 
+            margin: 0;
             width: 100%;
             li{
                 list-style: none;
