@@ -1,0 +1,125 @@
+@import "../base";
+body{
+    overflow-x: hidden;
+}
+.Header_container{
+    @include flexRow(center,space-between); 
+    background-color: $adjustment;
+    height: 70px;
+    padding: 0 20px;
+    user-select: none;
+    
+    .Logo{
+        width: 30%;
+        font-size: 25px;
+        font-weight: 600;
+        cursor: pointer
+        
+    }
+    .Header_links {
+        @include flexRow(center,space-between); 
+        width: 40%;
+        .links{
+            @include flexRow(center,space-between); 
+            width: 100%;
+            li{
+                list-style: none;
+                font-size: 18px;
+                position: relative;
+            }
+            li:hover{
+                opacity: 1;
+                cursor: pointer;
+            }
+            li::before{
+                content: "";
+                position: absolute;
+                left: 0;
+                bottom: 0;
+                width: 0;
+                height: 2px;
+                background: $mainColor;
+                transition: all .45s;
+            }
+            li:hover::before{
+                width: 100%;
+            }
+            .Sign_in{
+                @include button
+            }
+            .Sign_in:hover{
+                background-color: darkblue;
+            }
+        }
+    }
+    .nav_toggel{
+        display: none;
+    }
+    @include tablet {
+        .Header_links{
+            .links{
+                @include flexColumn(center,space-around);
+                padding-bottom: 15px;
+                position: absolute;
+                top: 50px;
+                height: 40%;
+                right: 0;
+                background-color: $adjustment;
+                transform: translateX(100%);
+                transition: all .45s;
+            }
+        }
+        .Header_links.open{
+            .links{
+                transform: translateX(0);
+            }
+        }
+        .nav_toggel{
+            height: 30px;
+            display: flex;
+            align-items: center;
+            cursor: pointer;
+            .menu{
+                width: 32px;
+                height: 2px;
+                background: black;
+                transition: all .45s;
+            }
+            .menu::before,
+            .menu::after{
+                content: "";
+                position: absolute;
+                height: 2px;
+                background: black;
+                border-radius: 2px;
+                transition: all .45s ease-in-out
+            }
+            .menu::before{
+                width: 25px;
+                transform: translateY(-8px);
+                right: 20px;
+            }
+            .menu::after{
+                width: 32px;
+                transform: translateY(8px);
+            }
+
+        }
+        .nav_toggel.open{
+            .menu{
+                transform: translateX(-40px);
+                background: transparent;
+            }
+            .menu::before{
+                width: 32px;
+                transform: rotate(45deg) translate(40px,-40px);   
+            }
+            .menu::after{
+                transform: rotate(-45deg) translate(26px,26px);   
+            }
+            
+        }
+     
+    }
+    
+}
