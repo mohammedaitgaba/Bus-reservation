@@ -1,8 +1,8 @@
 import React from 'react'
-
+import HomeBanner from '../../Componnents/homeBanner/HomeBanner'
 function home() {
   return (
-    <div>home</div>
+    <HomeBanner/>
   )
 }
 
