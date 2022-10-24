@@ -14,7 +14,7 @@
       position: absolute;
       width: 100%;
       height: 100%;
-      background-color: rgba(0, 0, 0, 0.436);
+      background-color: rgba(0, 0, 0, 0.282);
       z-index: -1;
    }
    .banner_mini_title{
@@ -102,5 +102,37 @@
             padding: 5px 0;
          }
       }
+   }
+   @include tablet {
+      .Cards{
+         @include flexColumn(center,space-evenly);
+         .WhyUs_Card{
+            width:80%;
+            margin: 15px 0;
+         }
+      }
+   }
+}
+.Pub_reservation{
+   @include flexColumn(center,space-evenly);
+   width: 100%;
+   height: 50vh;
+   background-image: linear-gradient(#ffffff, #342c487c, #ffffff8a), url('../../../public/images/background.jpg');
+   background-size: cover;
+   background-repeat: no-repeat;
+   background-attachment: fixed;
+   text-align: center;
+   margin: 20px 0;
+   margin-bottom: 120px;
+   .title_pub{
+      font-size: 32px;
+      color: white;
+      font-weight: 600;
+   }
+   .description_pub{
+      color: white;
+   }
+   .submit_pub{
+      @include button
    }
 }

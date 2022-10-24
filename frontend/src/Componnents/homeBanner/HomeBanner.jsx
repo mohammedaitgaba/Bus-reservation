@@ -86,6 +86,20 @@ function HomeBanner() {
         </div>
         
       </section>
+
+      <section className='Pub_reservation'>
+        <div className="title_pub">
+          Easiest Way To Book A Bus
+        </div>
+        <div className="description_pub">
+          Notre application de bus de Sydney, rapide, facile et sûre, <br /> 
+          vous permet de planifier votre voyage autour des meilleurs itinéraires 
+          aux prix de location de bus les moins chers.
+        </div>
+        <div className="submit_pub">
+          Reserver
+        </div>
+      </section>
     </div>
   )
 }
