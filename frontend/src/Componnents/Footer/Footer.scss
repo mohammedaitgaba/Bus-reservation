@@ -1,0 +1,35 @@
+@import "../base";
+.Footer_Holder{
+    @include flexColumn(center,space-between);
+    width: 100%;
+    background-color: $thirdColor;
+    color: $adjustment;
+    .Footer_body{
+        @include flexRow(flex-start,space-evenly);
+        width: 90%;
+        padding-top: 30px;
+        .links{
+            font-size: 35px;
+            i{
+                padding: 10px
+            }
+        }
+    }
+    .Footer_copyrights{
+        @include flexRow(flex-start,space-evenly);
+        width: 70%;
+    }
+    hr{
+        width: 80%;
+        color: white;
+    }
+    @include tablet{
+        .Footer_body{
+            flex-wrap: wrap;
+        }
+        .Footer_copyrights{
+            flex-wrap: wrap;
+            
+        }
+    }
+}

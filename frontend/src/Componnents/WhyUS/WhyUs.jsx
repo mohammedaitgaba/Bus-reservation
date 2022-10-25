@@ -46,15 +46,15 @@ function WhyUs() {
 
       <section className='Pub_reservation'>
             <div className="title_pub">
-            Easiest Way To Book A Bus
+                Le moyen le plus simple de réserver un bus
             </div>
             <div className="description_pub">
-            Notre application de bus de Sydney, rapide, facile et sûre, <br /> 
-            vous permet de planifier votre voyage autour des meilleurs itinéraires 
-            aux prix de location de bus les moins chers.
+                Notre application de bus de Sydney, rapide, facile et sûre, <br /> 
+                vous permet de planifier votre voyage autour des meilleurs itinéraires 
+                aux prix de location de bus les moins chers.
             </div>
             <div className="submit_pub">
-            Reserver
+                Reserver
             </div>
       </section>
     </div>
