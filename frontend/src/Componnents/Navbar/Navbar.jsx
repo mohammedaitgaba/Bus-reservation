@@ -5,7 +5,7 @@ function Navbar() {
   console.log(isOpen);
   return (
     <div className='Header_container'>
-        <div className="Logo">Supratour </div>
+        <div className="Logo">Supratours </div>
         <div className={`Header_links ${isOpen && "open"}`}>
             <ul className='links'>
                 <li>Booking</li>

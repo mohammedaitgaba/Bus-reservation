@@ -1,0 +1,45 @@
+@import "../base";
+.Booking_container{
+    @include flexColumn(center, center);
+    width: 100%;
+    .booking_form{
+       @include flexColumn(center, space-around);
+       background-color: $adjustment;
+       width: 80%;
+       padding: 40px 0;
+       border-radius: 40px;
+       box-shadow: rgba(50, 50, 105, 0.15) 0px 2px 5px 0px, rgba(0, 0, 0, 0.05) 0px 1px 1px 0px;
+       .options{
+          @include flexRow(center, space-around);
+          width: 100%;
+          div{
+             @include flexRow(center, center);
+             padding: 20px;
+             width: 100%;
+             select{
+                width: 50%;
+                margin: 0 10px ;
+             }
+             input{
+                width: 50%;
+                border-radius: 10px;
+                border: 0.5px solid gray;
+                padding: 10px;
+                margin: 0 10px ;
+ 
+             }
+          }
+       }
+       .submit_search{
+          @include button;
+       }
+    }
+    @include tablet {
+       .booking_form{
+          .options{
+             @include flexColumn(center, space-around);
+             
+          }
+       }
+    }
+ }
