@@ -77,6 +77,11 @@ body {
   position: relative;
 }
 
+.Header_container .Header_links .links li a {
+  text-decoration: none;
+  color: black;
+}
+
 .Header_container .Header_links .links li:hover {
   opacity: 1;
   cursor: pointer;

@@ -1,4 +1,5 @@
 import React,{useState} from 'react'
+import {Link} from "react-router-dom";
 import "./Navbar.css"
 function Navbar() {
   const [isOpen,setIsOpen] =useState(false)
@@ -8,8 +9,8 @@ function Navbar() {
         <div className="Logo">Supratours </div>
         <div className={`Header_links ${isOpen && "open"}`}>
             <ul className='links'>
-                <li>Booking</li>
-                <li>Contact us</li>
+                <li><Link to="/">Booking</Link> </li>
+                <li><Link to="/Contactus">Contact us</Link></li>
                 <button className='Sign_in'>Sign in</button>
             </ul>
         </div>

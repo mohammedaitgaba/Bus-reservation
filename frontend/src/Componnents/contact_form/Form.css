@@ -1,0 +1,105 @@
+.Form_holder {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: space-evenly;
+      -ms-flex-pack: space-evenly;
+          justify-content: space-evenly;
+  padding: 100px;
+  text-align: center;
+}
+
+.Form_holder .contact {
+  font-size: 18px;
+  font-weight: 700;
+}
+
+.Form_holder .big_title {
+  font-size: 32px;
+  font-weight: 700;
+}
+
+.Form_holder .form_contact {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: (1fr)[2];
+      grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+  margin: 10px;
+  padding-top: 20px;
+}
+
+.Form_holder .form_contact input {
+  padding: 10px;
+  width: 20rem;
+  border-radius: 10px;
+  border: none;
+  background-color: #FDF7FF;
+  -webkit-box-shadow: rgba(50, 50, 105, 0.15) 0px 2px 5px 0px, rgba(0, 0, 0, 0.05) 0px 1px 1px 0px;
+          box-shadow: rgba(50, 50, 105, 0.15) 0px 2px 5px 0px, rgba(0, 0, 0, 0.05) 0px 1px 1px 0px;
+}
+
+.Form_holder .form_message {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  padding-top: 20px;
+}
+
+.Form_holder .form_message textarea {
+  width: 41rem;
+  height: 10vh;
+  min-height: 10vh;
+  max-height: 40vh;
+  padding: 10px;
+  border-radius: 10px;
+  border: none;
+  background-color: #FDF7FF;
+  -webkit-box-shadow: rgba(50, 50, 105, 0.15) 0px 2px 5px 0px, rgba(0, 0, 0, 0.05) 0px 1px 1px 0px;
+          box-shadow: rgba(50, 50, 105, 0.15) 0px 2px 5px 0px, rgba(0, 0, 0, 0.05) 0px 1px 1px 0px;
+}
+
+.Form_holder .form_submit {
+  padding-top: 30px;
+}
+
+.Form_holder .form_submit button {
+  background-color: #001BC7;
+  border: none;
+  color: white;
+  font-size: 18px;
+  padding: 10px 15px;
+  border-radius: 25px;
+  cursor: pointer;
+}
+
+@media (max-width: 720px) {
+  .Form_holder {
+    padding: 10px;
+  }
+  .Form_holder .form_contact {
+    -ms-grid-columns: (1fr)[1];
+        grid-template-columns: repeat(1, 1fr);
+  }
+  .Form_holder .form_message textarea {
+    width: 20rem;
+  }
+}
+/*# sourceMappingURL=Form.css.map */

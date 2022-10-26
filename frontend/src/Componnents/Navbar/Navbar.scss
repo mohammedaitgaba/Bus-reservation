@@ -29,6 +29,10 @@ body{
                 list-style: none;
                 font-size: 18px;
                 position: relative;
+                a{
+                    text-decoration: none;
+                    color: black;
+                }
             }
             li:hover{
                 opacity: 1;

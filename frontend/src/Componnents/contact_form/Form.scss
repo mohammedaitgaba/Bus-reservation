@@ -1,0 +1,62 @@
+@import "../base";
+.Form_holder{
+    @include flexColumn(center,space-evenly);
+    padding: 100px;
+    text-align: center;
+    .contact{
+        font-size: 18px;
+        font-weight: 700;
+    }
+    .big_title{
+        font-size: 32px;
+        font-weight: 700;
+    }
+    .form_contact{
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 20px;
+        margin: 10px;
+        padding-top: 20px;
+        input{
+            padding: 10px;
+            width: 20rem;
+            border-radius: 10px;
+            border:none;
+            background-color: $adjustment;
+            box-shadow: rgba(50, 50, 105, 0.15) 0px 2px 5px 0px, rgba(0, 0, 0, 0.05) 0px 1px 1px 0px;
+        }
+    }
+    .form_message{
+        @include flexRow(center,center);
+        // width: 100%;
+        padding-top: 20px;
+        textarea{
+            width: 41rem;
+            height: 10vh;
+            min-height: 10vh;
+            max-height: 40vh;
+            padding: 10px;
+            border-radius: 10px;
+            border:none;
+            background-color: $adjustment;
+            box-shadow: rgba(50, 50, 105, 0.15) 0px 2px 5px 0px, rgba(0, 0, 0, 0.05) 0px 1px 1px 0px;
+        }
+    }
+    .form_submit{
+        padding-top: 30px;
+        button{
+            @include button
+        }
+    }
+    @include tablet {
+        padding: 10px;
+        .form_contact{
+            grid-template-columns: repeat(1, 1fr);
+        }
+        .form_message{
+            textarea{
+                width: 20rem;
+            }
+        }
+    }
+}
