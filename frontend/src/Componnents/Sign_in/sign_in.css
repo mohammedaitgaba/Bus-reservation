@@ -46,6 +46,10 @@
   font-weight: 600;
 }
 
+.Sign_in_holder .Register_form {
+  height: 80vh;
+}
+
 .Sign_in_holder .Close {
   position: absolute;
   top: 10px;
@@ -78,6 +82,10 @@
   padding: 10px;
   border-radius: 10px;
   border: 1px solid gray;
+}
+
+.Sign_in_holder .Registration {
+  height: 65%;
 }
 
 .Sign_in_holder .not_registred {
