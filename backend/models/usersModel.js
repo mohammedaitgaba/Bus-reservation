@@ -10,16 +10,18 @@ const usersSchema = mongoose.Schema({
         required :true, 
     },
     Phone : {
-        type : Number ,
+        type : String ,
         required :true, 
         unique :true ,
-        validate(value){
-            return validator.isEmail(value)
-        }},
+
+    },
     Email : {
         type : String ,
         required :true, 
-        unique :true 
+        unique :true,
+        validate(value){
+            return validator.isEmail(value)
+        }
     },
     Password : String
 

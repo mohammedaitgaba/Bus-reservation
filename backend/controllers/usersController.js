@@ -6,7 +6,9 @@ const bycrypt = require('bcryptjs')
 
 const registerUser = asyncHnadler( async(req,res)=>{
     // check for required data 
+    
     const {Fname,Lname,Phone,Email,Password} = req.body
+    console.log(Email);
     if (!Fname || !Lname || !Phone || !Email || !Password) {
         res.status(400)
         throw new Error('Please fill all the champs')
@@ -32,12 +34,7 @@ const registerUser = asyncHnadler( async(req,res)=>{
     })
     if (user) {
         res.json({
-            id : user.id,
-            firstname : user.Fname,
-            lastname : user.Lname,
-            Phone : user.Phone,
-            Email : user.Email,
-            token : TokenGenerator(user.id)
+            message : "succesfully created"
         })
     } else {
         res.status(400)
