@@ -1,4 +1,5 @@
 import {useState}  from "react";
+import {toast} from 'react-toastify';
 import './sign_in.css'
 const Sign_in = ({Open,Close})=>{
     const [IsRegister,setRegister] = useState(false)
@@ -34,6 +35,7 @@ const Sign_in = ({Open,Close})=>{
             body: JSON.stringify(formData)
         }).then(res => res.json())
         .then(data =>{
+            console.log(data.message);
             if (data.message ==="succesfully created") {
                 setFormData({
                     Fname:'',
@@ -43,12 +45,29 @@ const Sign_in = ({Open,Close})=>{
                     Password:'',
                     PasswordConfirmation:''
                 })
+                toast.success('succesfully Registred !', {
+                    position: toast.POSITION.TOP_CENTER
+                });
+                localStorage.setItem('user_id',data.id)
+                localStorage.setItem('user_Fname',data.firstname)
+                localStorage.setItem('user_Lname',data.lastname)
+                localStorage.setItem('token',data.token)
                 ToSign_in()
+            }
+            else if (data.message ==="Already existed") {
+                toast.error('User Already existed !', {
+                    position: toast.POSITION.TOP_CENTER
+                });
+            }
+            else{
+                toast.error('Something went wrong Please verify your data!', {
+                    position: toast.POSITION.TOP_CENTER
+                });
             }
         })
         // console.log("ss",typeof(formData.Phone));
     }
-    
+
 
     if (!Open) return null
     if (IsRegister) {
