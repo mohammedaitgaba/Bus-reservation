@@ -52,6 +52,7 @@ const loginUser = asyncHnadler(async(req,res)=>{
     const user = await User.findOne({Email})
     if (user &&(await bycrypt.compare(Password,user.Password))) {
         res.json({
+            message : "welcome",
             id : user.id,
             firstname : user.Fname,
             lastname : user.Lname,

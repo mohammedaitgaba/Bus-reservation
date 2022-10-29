@@ -1,6 +1,9 @@
-import {useState}  from "react";
+import {useState ,useEffect}  from "react";
 import {toast} from 'react-toastify';
+// import {useLocation, useNavigate} from "react-router-dom";
+
 import './sign_in.css'
+
 const Sign_in = ({Open,Close})=>{
     const [IsRegister,setRegister] = useState(false)
     const [error_message,setError_message] = useState('')
@@ -49,10 +52,7 @@ const Sign_in = ({Open,Close})=>{
                     position: toast.POSITION.TOP_CENTER
                 });
                 localStorage.setItem('user_id',data.id)
-                localStorage.setItem('user_Fname',data.firstname)
-                localStorage.setItem('user_Lname',data.lastname)
                 localStorage.setItem('token',data.token)
-                ToSign_in()
             }
             else if (data.message ==="Already existed") {
                 toast.error('User Already existed !', {
@@ -65,7 +65,31 @@ const Sign_in = ({Open,Close})=>{
                 });
             }
         })
-        // console.log("ss",typeof(formData.Phone));
+    }
+    const Login = ()=>{
+        fetch('http://localhost:5000/api/users/login',{
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify(formData)
+        })
+        .then(res => res.json())
+        .then(data => {
+            if (data.message === "welcome") {
+                localStorage.setItem('user_id',data.id)
+                localStorage.setItem('token',data.token)
+                toast.success(`Welcome back ${data.firstname +" "+ data.lastname} !`, {
+                    position: toast.POSITION.TOP_CENTER
+                });
+            }
+            else{
+                toast.error('Invalid info!', {
+                    position: toast.POSITION.TOP_CENTER
+                });
+            }
+        })
+        
     }
 
 
@@ -120,7 +144,7 @@ const Sign_in = ({Open,Close})=>{
                         Nouveau membre ! créer un compte
                     </div>
                     <div className="form_submit">
-                        <button type="button"> Login </button>
+                        <button type="button" onClick={Login}> Login </button>
                     </div>
                 </form>
             </section>

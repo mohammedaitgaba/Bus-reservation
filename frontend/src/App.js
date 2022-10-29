@@ -6,11 +6,12 @@ import Footer from "./Componnents/Footer/Footer";
 import  Home  from "./Pages/Home";
 import ContactUs from "./Pages/ContactUs";
 import 'bootstrap/dist/css/bootstrap.min.css';
-
+// import AuthContext from "./contexts/AuthContext";
 function App() {
   return (
     <>
     <Router>
+    {/* <AuthContext> */}
       <div className="App">
         <Navbar/>
         <Routes>
@@ -19,6 +20,7 @@ function App() {
         </Routes>
         <Footer/>
       </div>
+    {/* </AuthContext> */}
     </Router>
     <ToastContainer/>
     </>
