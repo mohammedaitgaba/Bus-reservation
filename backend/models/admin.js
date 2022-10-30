@@ -1,6 +1,5 @@
 const mongoose = require('mongoose')
-const validator = require('validator')
-const usersSchema = mongoose.Schema({
+const adminSchema = mongoose.Schema({
     Fname : {
         type : String ,
         required :true, 
@@ -9,28 +8,19 @@ const usersSchema = mongoose.Schema({
         type : String ,
         required :true, 
     },
-    Phone : {
-        type : String ,
-        required :true, 
-        unique :true ,
-
-    },
     Email : {
         type : String ,
         required :true, 
         unique :true,
-        validate(value){
-            return validator.isEmail(value)
-        }
     },
     Password : {
         type : String ,
-        required :true, 
+        required :true,
     }
 
 },{
     timestamps : true
 })
 
-module.exports = mongoose.model('users',usersSchema)
+module.exports = mongoose.model('admin',adminSchema)
 

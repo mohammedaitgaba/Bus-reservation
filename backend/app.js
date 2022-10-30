@@ -19,6 +19,7 @@ app.use('/api/users',require('./routes/usersRoute'))
 app.use('/api/travel',require('./routes/travelRoute'))
 app.use('/api/ticket',require('./routes/ticketReservationRoute'))
 app.use('/api/bus',require('./routes/busRoute'))
+app.use('/api/admin',require('./routes/adminRoute'))
 
 app.use(errorHandler)
 

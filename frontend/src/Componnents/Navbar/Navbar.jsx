@@ -16,7 +16,6 @@ function Navbar() {
   }
   useEffect(()=>{
     setIsLogged(localStorage.getItem('user_id'))
-    console.log(isLogged);
   })
 
   // const {loggedUserId,loggedFirstname} = useContext(AuthContext)
