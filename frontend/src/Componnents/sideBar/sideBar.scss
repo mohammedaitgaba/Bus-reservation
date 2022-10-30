@@ -1,0 +1,19 @@
+@import "../base";
+.sideContainer{
+    @include flexRow(flex-start,space-around);
+    width: 100%;
+    height: 10vh;
+    p{
+        margin: 0
+    }
+    .links_container{
+        @include flexRow(flex-start,space-around);
+        width: 100%
+    }
+    .sidelinks{
+        @include flexRow(center,space-evenly);
+        i{
+            margin-right: 10px;
+        }
+    }
+}

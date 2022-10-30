@@ -28,6 +28,7 @@ function Navbar() {
             <ul className='links'>
                 <li><Link to="/">Booking</Link> </li>
                 <li><Link to="/Contactus">Contact us</Link></li>
+                <li><Link to="/Dushboard">Dushboard</Link></li>
                 { isLogged ? <button className='Sign_in'onClick={()=>logout()}> logout</button> : <button className='Sign_in' onClick={()=>setOpenLogin(true)}> Sign in</button>}
                 
             </ul>

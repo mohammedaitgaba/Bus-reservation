@@ -3,7 +3,8 @@ import { ToastContainer } from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css'
 import Navbar from "./Componnents/Navbar/Navbar"
 import Footer from "./Componnents/Footer/Footer";
-import  Home  from "./Pages/Home";
+import Home from "./Pages/Home";
+import Dushboard from "./Pages/Dushboard";
 import ContactUs from "./Pages/ContactUs";
 import 'bootstrap/dist/css/bootstrap.min.css';
 // import AuthContext from "./contexts/AuthContext";
@@ -17,6 +18,7 @@ function App() {
         <Routes>
           <Route path='/' element={<Home/>}/>
           <Route path='/ContactUs' element={<ContactUs/>}/>
+          <Route path='/Dushboard' element={<Dushboard/>}/>
         </Routes>
         <Footer/>
       </div>
