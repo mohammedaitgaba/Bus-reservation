@@ -1,21 +1,28 @@
 import './sideBar.css'
-function sideBar() {
+import {useState} from 'react'
+function SideBar({componnentSwitcher}) {
+
+  const [isActive,setisActive] = useState('')
+  // const componnentSwitcher =  (componnent)=>{
+  //   setisActive(componnent)
+  // }
+  
   return (
     <section className='sideContainer'>
       <div className='links_container'>
 
-        <div className="sidelinks">
-          <i class="fal fa-map-marked-alt"></i>
+        <div className="sidelinks" onClick={()=>componnentSwitcher('Travel')}>
+          <i className="fal fa-map-marked-alt"></i>
           <p>Voyage</p>
         </div>
 
-        <div className="sidelinks">
-          <i class="fal fa-pen"></i>
-          <p>reservation</p>
+        <div className="sidelinks" onClick={()=>componnentSwitcher('Reservation')} >
+          <i className="fal fa-pen"></i>
+          <p>Reservation</p>
         </div>
 
-        <div className="sidelinks">
-          <i class="fal fa-bus"></i>
+        <div className="sidelinks" onClick={()=>componnentSwitcher('Bus')}>
+          <i className="fal fa-bus"></i>
           <p>Buses</p>
         </div>
       </div>
@@ -23,4 +30,4 @@ function sideBar() {
   )
 }
 
-export default sideBar
+export default SideBar

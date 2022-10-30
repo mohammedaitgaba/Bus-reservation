@@ -1,0 +1,15 @@
+@import "../base";
+td{
+    .fa-edit{
+        color: blue;
+        font-size: 20px;
+        margin-left: 10px;
+        cursor: pointer;
+    }
+    .fa-trash{
+        margin-left: 10px;
+        color: red;
+        font-size: 20px;
+        cursor: pointer;
+    }
+}
