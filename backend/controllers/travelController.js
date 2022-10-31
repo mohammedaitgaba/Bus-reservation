@@ -27,7 +27,6 @@ const setTravel = asyncHnadler(async (req,res) =>{
         dateStart,
         Price,
         Bus,
-        // breakPoints
     }
         )
         travel ? res.json({message : "created"}) : Error('invalid data')
@@ -70,8 +69,8 @@ const deleteTravel =asyncHnadler(async (req,res) =>{
     }
     // const id = req.params.id
     const updatedtravel = await Travel.findByIdAndUpdate(req.params.id, { $set: { deleted: true } })
-        
-    res.json({updatedtravel})
+    updatedtravel ? res.json({message:"deleted"}):res.json({message:"error"})
+    
 })
 
 module.exports = {

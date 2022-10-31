@@ -1,4 +1,4 @@
-import { BrowserRouter as Router,Routes , Route} from "react-router-dom";
+import { BrowserRouter as Router,Routes , Route } from "react-router-dom";
 import { ToastContainer } from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css'
 import Navbar from "./Componnents/Navbar/Navbar"
@@ -9,6 +9,7 @@ import ContactUs from "./Pages/ContactUs";
 import 'bootstrap/dist/css/bootstrap.min.css';
 // import AuthContext from "./contexts/AuthContext";
 function App() {
+
   return (
     <>
     <Router>
@@ -16,11 +17,10 @@ function App() {
       <div className="App">
         <Navbar/>
         <Routes>
-          <Route path='/' element={<Home/>}/>
-          <Route path='/ContactUs' element={<ContactUs/>}/>
+          <Route path='/' element={[<Home/>, <Footer/>]} />
+          <Route path='/ContactUs' element={[<ContactUs/>, <Footer/>]}/>
           <Route path='/Dushboard' element={<Dushboard/>}/>
         </Routes>
-        <Footer/>
       </div>
     {/* </AuthContext> */}
     </Router>

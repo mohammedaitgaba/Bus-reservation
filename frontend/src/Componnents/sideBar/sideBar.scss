@@ -1,17 +1,22 @@
 @import "../base";
 .sideContainer{
-    @include flexRow(flex-start,space-around);
+    @include flexRow(center,space-around);
     width: 100%;
-    height: 10vh;
+    height: 6vh;
+    position: sticky;
+    top: 70px;
+    background-color: #FDF7FF;
+    box-shadow: rgba(33, 35, 38, 0.1) 0px 10px 10px -10px;
     p{
         margin: 0
     }
     .links_container{
         @include flexRow(flex-start,space-around);
-        width: 100%
+        width: 50%
     }
     .sidelinks{
         @include flexRow(center,space-evenly);
+        cursor: pointer;
         i{
             margin-right: 10px;
         }

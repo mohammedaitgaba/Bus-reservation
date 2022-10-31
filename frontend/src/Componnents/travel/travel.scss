@@ -1,4 +1,18 @@
 @import "../base";
+.travels_container{
+    @include flexColumn(center,flex-start);
+    width: 100%;
+    min-height: 60vh;
+    .new_travel{
+        width: 90%;
+        padding-top: 10px;
+        @include flexColumn(flex-end,center);
+        button{
+            @include button
+        }
+        
+    }
+}
 td{
     .fa-edit{
         color: blue;

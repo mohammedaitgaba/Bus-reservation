@@ -36,12 +36,13 @@
         @include flexColumn(center,space-evenly);
         width: 80%;
         height: 50%;
-        input{
+        input,select{
             width: 100%;
             padding: 10px;
             border-radius: 10px;
             border:1px solid gray;
         }
+
         
     }
     .Registration{
