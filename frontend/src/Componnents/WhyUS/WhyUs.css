@@ -1,90 +1,49 @@
 .Why_us_Holder {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  -ms-flex-pack: distribute;
-      justify-content: space-around;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
   width: 100%;
   padding: 40px 0;
 }
-
 .Why_us_Holder .WhyUs_title {
   font-size: 32px;
   font-weight: 600;
 }
-
 .Why_us_Holder .Cards {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-orient: horizontal;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: row;
-          flex-direction: row;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  -ms-flex-pack: distribute;
-      justify-content: space-around;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-around;
   width: 80%;
   padding-top: 15px;
 }
-
 .Why_us_Holder .Cards .WhyUs_Card {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  -webkit-box-pack: space-evenly;
-      -ms-flex-pack: space-evenly;
-          justify-content: space-evenly;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
   text-align: center;
   border-radius: 20px;
   padding: 15px;
   width: 30%;
   height: 55vh;
-  -webkit-box-shadow: rgba(17, 17, 26, 0.05) 0px 1px 0px, rgba(17, 17, 26, 0.1) 0px 0px 8px;
-          box-shadow: rgba(17, 17, 26, 0.05) 0px 1px 0px, rgba(17, 17, 26, 0.1) 0px 0px 8px;
+  box-shadow: rgba(17, 17, 26, 0.05) 0px 1px 0px, rgba(17, 17, 26, 0.1) 0px 0px 8px;
 }
-
 .Why_us_Holder .Cards .WhyUs_Card img {
   width: 60px;
 }
-
 .Why_us_Holder .Cards .WhyUs_Card .card_title {
   font-size: 18px;
   font-weight: 700;
   padding: 5px 0;
 }
-
 @media (max-width: 720px) {
   .Why_us_Holder .Cards {
-    display: -webkit-box;
-    display: -ms-flexbox;
     display: flex;
-    -webkit-box-orient: vertical;
-    -webkit-box-direction: normal;
-        -ms-flex-direction: column;
-            flex-direction: column;
-    -webkit-box-align: center;
-        -ms-flex-align: center;
-            align-items: center;
-    -webkit-box-pack: space-evenly;
-        -ms-flex-pack: space-evenly;
-            justify-content: space-evenly;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
   }
   .Why_us_Holder .Cards .WhyUs_Card {
     width: 80%;
@@ -93,23 +52,13 @@
 }
 
 .Pub_reservation {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  -webkit-box-pack: space-evenly;
-      -ms-flex-pack: space-evenly;
-          justify-content: space-evenly;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
   width: 100%;
   height: 50vh;
-  background-image: -webkit-gradient(linear, left top, left bottom, from(#00000084), color-stop(#342c488b), to(#0000008a)), url("../../../public/images/Our-background.jpg");
-  background-image: linear-gradient(#00000084, #342c488b, #0000008a), url("../../../public/images/Our-background.jpg");
+  background-image: linear-gradient(rgba(0, 0, 0, 0.5176470588), rgba(52, 44, 72, 0.5450980392), rgba(0, 0, 0, 0.5411764706)), url("../../../public/images/Our-background.jpg");
   background-size: cover;
   background-repeat: no-repeat;
   background-attachment: fixed;
@@ -117,17 +66,14 @@
   margin: 20px 0;
   margin-bottom: 120px;
 }
-
 .Pub_reservation .title_pub {
   font-size: 32px;
   color: white;
   font-weight: 600;
 }
-
 .Pub_reservation .description_pub {
   color: white;
 }
-
 .Pub_reservation .submit_pub {
   background-color: #001BC7;
   border: none;
@@ -136,5 +82,4 @@
   padding: 10px 15px;
   border-radius: 25px;
   cursor: pointer;
-}
-/*# sourceMappingURL=WhyUs.css.map */
+}/*# sourceMappingURL=WhyUs.css.map */

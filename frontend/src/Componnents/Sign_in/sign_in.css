@@ -1,17 +1,8 @@
 .Sign_in_holder {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
   position: absolute;
   width: 100%;
   height: 100vh;
@@ -20,36 +11,24 @@
   background-color: rgba(0, 0, 0, 0.484);
   z-index: 10;
 }
-
 .Sign_in_holder .sign_in_form {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  -ms-flex-pack: distribute;
-      justify-content: space-around;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
   position: relative;
   background-color: white;
   height: 60vh;
   width: 40vw;
   border-radius: 25px;
 }
-
 .Sign_in_holder .sign_in_form .title {
   font-size: 28px;
   font-weight: 600;
 }
-
 .Sign_in_holder .Register_form {
   height: 80vh;
 }
-
 .Sign_in_holder .Close {
   position: absolute;
   top: 10px;
@@ -58,42 +37,28 @@
   color: red;
   cursor: pointer;
 }
-
 .Sign_in_holder .form_body {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  -webkit-box-pack: space-evenly;
-      -ms-flex-pack: space-evenly;
-          justify-content: space-evenly;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
   width: 80%;
   height: 50%;
 }
-
 .Sign_in_holder .form_body input, .Sign_in_holder .form_body select {
   width: 100%;
   padding: 10px;
   border-radius: 10px;
   border: 1px solid gray;
 }
-
 .Sign_in_holder .Registration {
   height: 65%;
 }
-
 .Sign_in_holder .not_registred {
-  color: #3030f2;
+  color: rgb(48, 48, 242);
   text-decoration: underline;
   cursor: pointer;
 }
-
 .Sign_in_holder .form_submit button {
   background-color: #001BC7;
   border: none;
@@ -102,5 +67,4 @@
   padding: 10px 15px;
   border-radius: 25px;
   cursor: pointer;
-}
-/*# sourceMappingURL=sign_in.css.map */
+}/*# sourceMappingURL=sign_in.css.map */

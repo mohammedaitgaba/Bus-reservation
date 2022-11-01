@@ -5,11 +5,13 @@ const {
     setTravel,
     updateTravel,
     deleteTravel,
-    checkTravel
+    checkTravel,
+    getTravelById
     // newBreakCity
  } = require('../controllers/travelController')
 
 router.route('/').get(getAllTravels).post(setTravel)
+router.post('/findTravel',getTravelById)
 router.route('/:cityStart/:cityEnd').get(checkTravel)
 router.route('/:id').put(updateTravel).delete(deleteTravel)
 // .post(newBreakCity)

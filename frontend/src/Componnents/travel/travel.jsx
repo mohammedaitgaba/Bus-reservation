@@ -5,12 +5,14 @@ import {toast} from 'react-toastify';
 import Popup from './Popup';
 function Travel() {
     const [isOpen,setIsOpen] =useState(false)
-    const [openAddTravelPopup, setOpenTravelPopup ] = useState(false);
-    const [openUpdateTravelPopup, setopenUpdateTravelPopup ] = useState(false);
+    const [openAddTravelPopup, setOpenTravelPopup] = useState();
+    // const [openUpdateTravelPopup, setopenUpdateTravelPopup] = useState(false);
 
-    const [travels,setTravels] = useState([])    
+    const [travels,setTravels] = useState([]) 
+
     useEffect(()=>{ 
         getTravels()
+        console.log(openAddTravelPopup);
     },[])
 
     const getTravels = async()=>{
@@ -42,13 +44,10 @@ function Travel() {
             }
         })
     }
-    function updateTravel(id){
-        setopenUpdateTravelPopup(true)
-    }
     return (
     <section className='travels_container'>
         <div className='new_travel'>
-            <button onClick={()=>setOpenTravelPopup(true)}>Ajoute voyage</button>
+            <button onClick={()=>setOpenTravelPopup("openAdd")}>Ajoute voyage</button>
         </div>
         <table className="table">
             <thead>
@@ -69,12 +68,12 @@ function Travel() {
                 <tr>
                     <td>{element._id} </td>
                     <td>{element.cityStart} </td>
-                    <td>{element.cityStart}</td>
-                    <td>{element.cityStart}</td>
-                    <td>{element.cityStart}</td>
-                    <td>{element.cityStart}</td>
+                    <td>{element.cityEnd}</td>
+                    <td>{element.dateStart}</td>
+                    <td>{element.Bus.name}</td>
+                    <td>{element.Price} DH</td>
                     <td>
-                        <i className="fal fa-edit" onClick={()=>updateTravel(element._id)}></i>
+                        <i className="fal fa-edit" onClick={()=>setOpenTravelPopup(element._id)} ></i>
                         <i className="fal fa-trash" onClick={()=>deleteTravel(element._id)}></i>
                     </td>
 
@@ -83,7 +82,8 @@ function Travel() {
             }
             </tbody>
         </table>
-        <Popup Open={openAddTravelPopup} Update={openUpdateTravelPopup} Close={()=> setOpenTravelPopup(false)}/>
+        {/* <button onClick={()=>setopenUpdateTravelPopup(true)}>dd</button> */}
+        <Popup Open={openAddTravelPopup} Close={()=> setOpenTravelPopup(false)} />
 
     </section>
   )
