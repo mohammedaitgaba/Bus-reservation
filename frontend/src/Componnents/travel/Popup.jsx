@@ -5,7 +5,7 @@ const Popup =({Open,Close}) => {
     const [Buses,setBuses] = useState([])
     const [travelinfo,setTravelinfo] = useState([])
     const [formData,setFormData] = useState({
-        id:"",
+        // id:"",
         cityStart:'',
         cityEnd:'',
         dateStart:"",
@@ -61,7 +61,6 @@ const Popup =({Open,Close}) => {
         }))
     }
     const AddTravel =()=>{
-        console.log(formData);
         fetch('http://localhost:5000/api/travel',{
             method: "POST",
             headers: {

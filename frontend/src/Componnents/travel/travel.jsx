@@ -6,6 +6,7 @@ import Popup from './Popup';
 function Travel() {
     const [isOpen,setIsOpen] =useState(false)
     const [openAddTravelPopup, setOpenTravelPopup] = useState();
+    const [jwtToken , setJwtToken]=useState(localStorage.getItem('token'))
     // const [openUpdateTravelPopup, setopenUpdateTravelPopup] = useState(false);
 
     const [travels,setTravels] = useState([]) 
@@ -19,6 +20,9 @@ function Travel() {
         setTravels([])
         await fetch('http://localhost:5000/api/travel',{
             method: "Get",
+            headers: {
+                "Authorization":"Bearer "+jwtToken+""
+            },
         })
         .then(res => res.json())
         .then(data=> data.travel.forEach(element => {

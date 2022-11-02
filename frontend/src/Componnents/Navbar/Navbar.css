@@ -30,7 +30,6 @@ body {
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
-  width: 35%;
 }
 .Header_container .Header_links .links {
   display: flex;
@@ -44,7 +43,7 @@ body {
   list-style: none;
   font-size: 18px;
   position: relative;
-  padding-right: 15px;
+  margin-right: 15px;
 }
 .Header_container .Header_links .links li a {
   text-decoration: none;

@@ -8,14 +8,18 @@ import AuthContext from '../../contexts/AuthContext';
 function Navbar() {
   const [isOpen,setIsOpen] =useState(false)
   const [openLogin, setOpenLogin ] = useState(false);
-  const [isLogged , setIsLogged]  = useState(localStorage.getItem('user_id'))
+  const [userLogged , setUserLogged]  = useState(localStorage.getItem('user_id'))
+  const [adminLogged , setAdminLogged]  = useState(localStorage.getItem('Admin_id'))
 
   const logout=()=>{
     localStorage.removeItem("user_id")
+    localStorage.removeItem("token")
     window.location.reload();
   }
   useEffect(()=>{
-    setIsLogged(localStorage.getItem('user_id'))
+    setUserLogged(localStorage.getItem('user_id'))
+    setAdminLogged(localStorage.getItem('Admin_id'))
+    console.log(adminLogged);
   })
 
   // const {loggedUserId,loggedFirstname} = useContext(AuthContext)
@@ -28,8 +32,8 @@ function Navbar() {
             <ul className='links'>
                 <li><Link to="/">Booking</Link> </li>
                 <li><Link to="/Contactus">Contact us</Link></li>
-                <li><Link to="/Dushboard">Dushboard</Link></li>
-                { isLogged ? <button className='Sign_in'onClick={()=>logout()}> logout</button> : <button className='Sign_in' onClick={()=>setOpenLogin(true)}> Sign in</button>}
+                {adminLogged?<li><Link to="/Dushboard">Dushboard</Link></li>:null}
+                {userLogged||adminLogged? <button className='Sign_in'onClick={()=>logout()}> logout</button> : <button className='Sign_in' onClick={()=>setOpenLogin(true)}> Sign in</button>}
                 
             </ul>
         </div>

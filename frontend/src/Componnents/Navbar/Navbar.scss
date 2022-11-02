@@ -20,7 +20,6 @@ body{
     }
     .Header_links {
         @include flexRow(center,space-between); 
-        width: 35%;
         .links{
             @include flexRow(center,space-between); 
             margin: 0;
@@ -29,7 +28,7 @@ body{
                 list-style: none;
                 font-size: 18px;
                 position: relative;
-                padding-right: 15px;
+                margin-right: 15px;
                 a{
                     text-decoration: none;
                     color: black;

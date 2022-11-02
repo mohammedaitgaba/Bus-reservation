@@ -67,28 +67,54 @@ const Sign_in = ({Open,Close})=>{
         })
     }
     const Login = ()=>{
-        fetch('http://localhost:5000/api/users/login',{
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json"
-            },
-            body: JSON.stringify(formData)
-        })
-        .then(res => res.json())
-        .then(data => {
-            if (data.message === "welcome") {
-                localStorage.setItem('user_id',data.id)
-                localStorage.setItem('token',data.token)
-                toast.success(`Welcome back ${data.firstname +" "+ data.lastname} !`, {
-                    position: toast.POSITION.TOP_CENTER
-                });
-            }
-            else{
-                toast.error('Invalid info!', {
-                    position: toast.POSITION.TOP_CENTER
-                });
-            }
-        })
+        if (formData.Email ==="admin@gmail.com") {
+            fetch('http://localhost:5000/api/admin/login',{
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify(formData)
+            })
+            .then(res => res.json())
+            .then(data => {
+                if (data.message === "welcome") {
+                    localStorage.setItem('Admin_id',data.id)
+                    localStorage.setItem('token',data.token)
+                    toast.success(`Welcome back ${data.firstname +" "+ data.lastname} !`, {
+                        position: toast.POSITION.TOP_CENTER
+                    });
+                }
+                else{
+                    toast.error('Invalid info!', {
+                        position: toast.POSITION.TOP_CENTER
+                    });
+                }
+            })
+        }else{
+
+            fetch('http://localhost:5000/api/users/login',{
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify(formData)
+            })
+            .then(res => res.json())
+            .then(data => {
+                if (data.message === "welcome") {
+                    localStorage.setItem('user_id',data.id)
+                    localStorage.setItem('token',data.token)
+                    toast.success(`Welcome back ${data.firstname +" "+ data.lastname} !`, {
+                        position: toast.POSITION.TOP_CENTER
+                    });
+                }
+                else{
+                    toast.error('Invalid info!', {
+                        position: toast.POSITION.TOP_CENTER
+                    });
+                }
+            })
+        }
         
     }
 
