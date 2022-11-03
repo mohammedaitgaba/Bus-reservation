@@ -1,7 +1,7 @@
 import {useState ,useEffect}  from "react";
 import {toast} from 'react-toastify';
 import '../Sign_in/sign_in'
-const Popup =({Open,Close}) => {
+const Popup =({Open,Close,getData}) => {
     const [Buses,setBuses] = useState([])
     const [travelinfo,setTravelinfo] = useState([])
     const [formData,setFormData] = useState({
@@ -43,7 +43,7 @@ const Popup =({Open,Close}) => {
         .then(data=>{
             // setTravelinfo(data.travel)
             setFormData({
-                id: data.travel._id,
+                // id: data.travel._id,
                 cityStart : data.travel.cityStart,
                 cityEnd:data.travel.cityEnd,
                 dateStart : data.travel.dateStart,
@@ -72,11 +72,16 @@ const Popup =({Open,Close}) => {
         .then(data=>{
             if (data.message === "created") {
                 Close()
+                getData()
+                toast.success(`Added succesfully !`, {
+                    position: toast.POSITION.TOP_CENTER
+                });
             }
+
         })
     }
     const UpdateTravel=()=>{
-        const id = formData.id
+        const id = Open
         fetch(`http://localhost:5000/api/travel/${id}`,{
             method: "PUT",
             headers: {
@@ -85,8 +90,12 @@ const Popup =({Open,Close}) => {
             body: JSON.stringify(formData)
         }).then(res=>res.json())
         .then(data=>{
-            if (data.message === "updated") {
+            if (data.updatedtravel) {
                 Close()
+                getData()
+                toast.success(`Updated succesfully !`, {
+                    position: toast.POSITION.TOP_CENTER
+                });
             }
         })
     }

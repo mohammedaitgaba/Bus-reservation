@@ -1,0 +1,69 @@
+.bus_container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 30px 20px;
+}
+.bus_container .add_bus {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+}
+.bus_container .add_bus button {
+  background-color: #001BC7;
+  border: none;
+  color: white;
+  font-size: 18px;
+  padding: 10px 15px;
+  border-radius: 25px;
+  cursor: pointer;
+  width: 250px;
+}
+.bus_container .add_bus form {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  width: 60%;
+}
+.bus_container .add_bus input, .bus_container .add_bus select {
+  width: 90%;
+  padding: 10px;
+  border-radius: 10px;
+  border: 1px solid gray;
+  margin: 0 10px;
+}
+.bus_container .All_bus {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 40px;
+  width: 100%;
+  margin-top: 20px;
+}
+.bus_container .All_bus .bus_card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  border-radius: 10px;
+  background-color: #f0e1f6;
+  height: 200px;
+}
+.bus_container .All_bus .bus_card img {
+  width: 100%;
+  height: 80%;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+}
+.bus_container .All_bus .bus_card .info {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  width: 90%;
+  font-size: 18px;
+}/*# sourceMappingURL=bus.css.map */

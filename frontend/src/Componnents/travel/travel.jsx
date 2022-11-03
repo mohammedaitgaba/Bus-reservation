@@ -6,14 +6,15 @@ import Popup from './Popup';
 function Travel() {
     const [isOpen,setIsOpen] =useState(false)
     const [openAddTravelPopup, setOpenTravelPopup] = useState();
+    const [getData, setGetData] = useState();
     const [jwtToken , setJwtToken]=useState(localStorage.getItem('token'))
+    const [travels,setTravels] = useState([]) 
     // const [openUpdateTravelPopup, setopenUpdateTravelPopup] = useState(false);
 
-    const [travels,setTravels] = useState([]) 
 
     useEffect(()=>{ 
         getTravels()
-        console.log(openAddTravelPopup);
+
     },[])
 
     const getTravels = async()=>{
@@ -48,6 +49,7 @@ function Travel() {
             }
         })
     }
+    
     return (
     <section className='travels_container'>
         <div className='new_travel'>
@@ -69,7 +71,7 @@ function Travel() {
             {
             travels?
             travels.map((element,i) => (
-                <tr>
+                <tr key={i}>
                     <td>{element._id} </td>
                     <td>{element.cityStart} </td>
                     <td>{element.cityEnd}</td>
@@ -87,7 +89,7 @@ function Travel() {
             </tbody>
         </table>
         {/* <button onClick={()=>setopenUpdateTravelPopup(true)}>dd</button> */}
-        <Popup Open={openAddTravelPopup} Close={()=> setOpenTravelPopup(false)} />
+        <Popup Open={openAddTravelPopup} Close={()=> setOpenTravelPopup(false)} getData ={()=>getTravels()} />
 
     </section>
   )
