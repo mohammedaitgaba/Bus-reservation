@@ -30,4 +30,9 @@
 }
 .sideContainer .sidelinks i {
   margin-right: 10px;
+}
+@media (max-width: 720px) {
+  .sideContainer .links_container {
+    width: 100%;
+  }
 }/*# sourceMappingURL=sideBar.css.map */

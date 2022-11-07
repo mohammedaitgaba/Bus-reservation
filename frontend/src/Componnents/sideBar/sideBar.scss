@@ -21,4 +21,9 @@
             margin-right: 10px;
         }
     }
+    @include tablet {
+        .links_container{
+            width: 100%;
+        }
+    }
 }

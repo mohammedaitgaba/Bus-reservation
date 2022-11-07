@@ -36,6 +36,20 @@
   border: 1px solid gray;
   margin: 0 10px;
 }
+@media (max-width: 720px) {
+  .bus_container .add_bus form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+  .bus_container .add_bus button {
+    width: auto;
+  }
+  .bus_container .add_bus input {
+    margin: 10px;
+  }
+}
 .bus_container .All_bus {
   display: flex;
   flex-wrap: wrap;
@@ -51,7 +65,7 @@
   justify-content: flex-start;
   border-radius: 10px;
   background-color: #f0e1f6;
-  height: 200px;
+  height: 235px;
 }
 .bus_container .All_bus .bus_card img {
   width: 100%;

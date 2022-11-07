@@ -4,13 +4,14 @@ import Travel from "../Componnents/travel/travel"
 import Bus from "../Componnents/bus/bus"
 import Reservation from '../Componnents/Reservation/Reservation'
 function Dushboard() {
-  const [componnent, setComponnent] = useState('Travel');
+  const [componnent, setComponnent] = useState(localStorage.getItem('componnent'));
   const [isTrue, setisTrue] = useState(false);
 
   const componnentSwitcher = name => {
     // 👇️ take parameter passed from Child component
+    localStorage.setItem('componnent',name)
     setComponnent(name)
-    console.log("in dushboard", componnent);
+    
   };
   return(
     <>

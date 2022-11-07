@@ -61,14 +61,14 @@ const AddBus =()=>{
       <div className="add_bus">
         <form action="">
           <input type="text" placeholder='Bus nom' name='name' value={bus_name} onChange={handleChange} />
-          <input type="number" placeholder='capacite' name='capacity' min={0} defaultValue={55}  value={capacity} onChange={handleChange}/>
+          <input type="number" placeholder='capacite' name='capacity' min={0} value={capacity} onChange={handleChange}/>
           <button onClick={()=> AddBus()}>Ajoute bus</button> 
         </form>
       </div>
       <section className='All_bus'>
       {Bus?
             Bus.map((element,i) => (
-              <div className="bus_card">
+              <div className="bus_card" key={i}>
               <img src={`${process.env.PUBLIC_URL}/images/tobis.jpg`} alt="" />
               <div className="info">
                 <p> {element.name} </p>
