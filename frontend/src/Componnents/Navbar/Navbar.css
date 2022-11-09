@@ -81,7 +81,7 @@ body {
 .Header_container .nav_toggel {
   display: none;
 }
-@media (max-width: 720px) {
+@media (max-width: 768px) {
   .Header_container .Header_links .links {
     display: flex;
     flex-direction: column;

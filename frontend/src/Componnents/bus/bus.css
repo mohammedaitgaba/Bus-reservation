@@ -36,7 +36,7 @@
   border: 1px solid gray;
   margin: 0 10px;
 }
-@media (max-width: 720px) {
+@media (max-width: 768px) {
   .bus_container .add_bus form {
     display: flex;
     flex-direction: column;

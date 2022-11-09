@@ -9,11 +9,13 @@ function HomeReservation() {
 })
 const [jwtToken , setJwtToken]=useState(localStorage.getItem('token'))
 const [travels,setTravels] = useState([]) 
-const [width,setWidth] = useState([window.screen.width]) 
- useEffect(()=>{
-  setWidth(window.screen.width)
-  console.log(width);
- },[window.screen.width])
+const [ScreenWidth,setScreenWidth] = useState(document.body.clientWidth)
+
+var onresize = function() {
+  setScreenWidth(document.body.clientWidth)
+}
+window.addEventListener("resize", onresize);
+
  
   const handleChange = (e)=>{
     setFormData((previousState)=>({
@@ -73,12 +75,16 @@ const searchTravel=async()=>{
         {travels?
               travels.map((element,i) => (
                 <div className="travel_card" key={i}>
+                  <div className='ticket_cut_left_side'></div>
+                  <div className='ticket_cut_right_side'></div>
                   <div className="info">
                     <div>
                       <p> Ville de depart :  {element.cityStart}</p>
                       <p> Date de depart : {moment(element.dateStart).format('L')+" "+moment(element.dateStart).format('LT')}</p>
                     </div>
-                    <i class="fal fa-arrow-from-left"></i>
+                    {ScreenWidth>768?
+                      <i class="fal fa-arrow-from-left"></i>:<i class="fal fa-arrow-from-top"></i>
+                    } 
                     <div>
                       <p> Ville d'arrive : {element.cityEnd}</p>
                       <p> Date d'arrive  : {moment(element.dateEnd).format('L')+" "+moment(element.dateEnd).format('LT')}</p>
