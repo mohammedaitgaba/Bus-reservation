@@ -10,7 +10,6 @@ const getAllTravels = asyncHnadler(async (req, res) => {
     })
 })
 const getTravelById = asyncHnadler(async (req, res) => {
-    console.log(req.body.id);
     const travel = await Travel.findById(req.body.id).populate('Bus')
     travel ? res.json({
         travel
@@ -61,6 +60,7 @@ const setTravel = asyncHnadler(async (req, res) => {
         cityStart,
         cityEnd,
         dateStart,
+        dateEnd,
         Price,
         Bus
     } = req.body
@@ -77,6 +77,7 @@ const setTravel = asyncHnadler(async (req, res) => {
         cityStart,
         cityEnd,
         dateStart,
+        dateEnd,
         Price,
         Bus,
     })

@@ -34,6 +34,31 @@
           @include button;
        }
     }
+    .travels_found_container{
+      width: 80%;
+      padding: 20px;
+      .travel_card{
+         @include flexColumn(center,center);
+         border-radius: 15px;
+         width: 100%;
+         box-shadow: rgba(50, 50, 105, 0.15) 0px 2px 5px 0px, rgba(0, 0, 0, 0.05) 0px 1px 1px 0px;
+         background-color: #FDF7FF;
+         padding: 20px;
+         margin: 10px;
+         .info{
+            @include flexRow(center, space-around);
+            width: 100%;
+            i{
+               font-size: 25px;
+               color: $mainColor ;
+            }
+         }
+         .price{
+            font-size: 18px;
+            font-weight: 700
+         }
+      }
+    }
     @include tablet {
        .booking_form{
           .options{

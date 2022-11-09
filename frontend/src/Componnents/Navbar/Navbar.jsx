@@ -13,6 +13,7 @@ function Navbar() {
 
   const logout=()=>{
     localStorage.removeItem("user_id")
+    localStorage.removeItem("Admin_id")
     localStorage.removeItem("token")
     window.location.reload();
   }

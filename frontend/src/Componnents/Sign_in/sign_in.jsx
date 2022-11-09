@@ -83,11 +83,13 @@ const Sign_in = ({Open,Close})=>{
                     toast.success(`Welcome back ${data.firstname +" "+ data.lastname} !`, {
                         position: toast.POSITION.TOP_CENTER
                     });
+                    Close()
                 }
                 else{
                     toast.error('Invalid info!', {
                         position: toast.POSITION.TOP_CENTER
                     });
+
                 }
             })
         }else{
@@ -107,6 +109,7 @@ const Sign_in = ({Open,Close})=>{
                     toast.success(`Welcome back ${data.firstname +" "+ data.lastname} !`, {
                         position: toast.POSITION.TOP_CENTER
                     });
+                    Close()
                 }
                 else{
                     toast.error('Invalid info!', {
@@ -143,7 +146,7 @@ const Sign_in = ({Open,Close})=>{
                     déjà membre ! connectez-vous
                 </div>
                 <div className="form_submit">
-                    <button type="button" onClick={Sign_up}> Cree compte </button>
+                    <button type="button" onClick={()=> Sign_up()}> Cree compte </button>
                 </div>
                 <div className="error">
                     {error_message}

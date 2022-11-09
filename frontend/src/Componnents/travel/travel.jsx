@@ -1,6 +1,8 @@
 import './travel.css';
 import {useState,useEffect} from 'react'
 import {toast} from 'react-toastify';
+import moment from 'moment';
+
 
 import Popup from './Popup';
 function Travel() {
@@ -58,10 +60,11 @@ function Travel() {
         <table className="table">
             <thead>
                 <tr>
-                <th scope="col">Travle id</th>
+                <th scope="col">Travle</th>
                 <th scope="col">Depart</th>
                 <th scope="col">Fin</th>
                 <th scope="col">Date depart</th>
+                <th scope="col">Date d'arrive</th>
                 <th scope="col">Bus</th>
                 <th scope="col">Prix</th>
                 <th scope="col">options</th>
@@ -72,10 +75,11 @@ function Travel() {
             travels?
             travels.map((element,i) => (
                 <tr key={i}>
-                    <td>{element._id} </td>
+                    <td>{i+1} </td>
                     <td>{element.cityStart} </td>
                     <td>{element.cityEnd}</td>
-                    <td>{element.dateStart}</td>
+                    <td>{moment(element.dateStart).format('L')+" "+moment(element.dateStart).format('LT')}</td>
+                    <td>{moment(element.dateEnd).format('L')+" "+moment(element.dateEnd).format('LT')}</td>
                     <td>{element.Bus.name}</td>
                     <td>{element.Price} DH</td>
                     <td>

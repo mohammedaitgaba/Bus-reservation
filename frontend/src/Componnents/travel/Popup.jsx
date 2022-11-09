@@ -9,10 +9,11 @@ const Popup =({Open,Close,getData}) => {
         cityStart:'',
         cityEnd:'',
         dateStart:"",
+        dateEnd:"",
         Bus:'',
         Price:'',
     })
-    const {cityStart,cityEnd,dateStart,Bus,Price}=formData
+    const {cityStart,cityEnd,dateStart,dateEnd,Bus,Price}=formData
     useEffect(()=>{ 
         getBuses()
         if (Open) {  
@@ -114,7 +115,8 @@ const Popup =({Open,Close,getData}) => {
                 <div className="form_body Registration">
                     <input type="text" placeholder="ville depart" name="cityStart" value={cityStart} onChange={handleChange}/>
                     <input type="text" placeholder="vill d'arrive" name="cityEnd" value={cityEnd} onChange ={handleChange}/>
-                    <input type="datetime-local"  name="dateStart" value={dateStart} onChange={handleChange}/>
+                    <input type="datetime-local"  name="dateStart" placeholder="ddd" value={dateStart} onChange={handleChange}/>
+                    <input type="datetime-local"  name="dateEnd" value={dateEnd} onChange={handleChange}/>
                     <select onChange={handleChange} name="Bus" value={Bus} >
                     {
                         Buses?

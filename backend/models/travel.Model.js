@@ -12,6 +12,10 @@ const travelSchema = mongoose.Schema({
         type : Date ,
         required : true
     },
+    dateEnd : {
+        type : Date ,
+        required : true
+    },
     Price : {
         type : Number,
         required : true

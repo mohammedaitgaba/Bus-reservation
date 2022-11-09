@@ -19,7 +19,11 @@ function App() {
         <Routes>
           <Route path='/' element={[<Home/>, <Footer/>]} />
           <Route path='/ContactUs' element={[<ContactUs/>, <Footer/>]}/>
-          <Route path='/Dushboard' element={<Dushboard/>}/>
+          {
+            localStorage.getItem('Admin_id') &&
+            <Route path='/Dushboard' element={<Dushboard/>}/>
+          }
+          
         </Routes>
       </div>
     {/* </AuthContext> */}
