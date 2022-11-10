@@ -24,6 +24,11 @@ const travelSchema = mongoose.Schema({
         type: mongoose.Schema.Types.ObjectId, 
         ref: "bus"
     },
+    Seats_reserved : {
+        type : Number,
+        required : true,
+        default : 0
+    },
     deleted : {
         type : Boolean , 
         default:false

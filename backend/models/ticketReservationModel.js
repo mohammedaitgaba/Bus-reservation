@@ -2,11 +2,13 @@ const mongoose = require('mongoose')
 const ticketReservationSchema = mongoose.Schema({
     travel:{
         type: mongoose.Schema.Types.ObjectId, 
-        ref: "travels"
+        ref: "travels",
+        required : true
     },
     user:{
         type: mongoose.Schema.Types.ObjectId, 
-        ref: "users"
+        ref: "users",
+        required : true
     },
 
     deleted : {

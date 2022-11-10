@@ -2,6 +2,7 @@ const asyncHnadler = require('express-async-handler')
 const { populate } = require('../models/ticketReservationModel')
 const Ticket = require('../models/ticketReservationModel')
 const Bus = require('../models/busModel')
+const Travel = require('../models/travel.Model')
 
 const getTicket = asyncHnadler(async(req,res) =>{
 
@@ -16,31 +17,43 @@ const getMyTickets = asyncHnadler(async(req,res) =>{
     res.json({ticket})
 })
 
-const setTicket = asyncHnadler(async(req,res) =>{
-    const {travel,user} = req.body
+const setTicket = asyncHnadler(async(id_travel,id_user) =>{
+    console.log(id_travel,id_user);
     const ticket = Ticket.create({
-        travel,
-        user
+        travel:id_travel,
+        user:id_user
     })
+
     if (ticket) {
-        res.json({message: "ticket has been ceated succesfully"})
+        return {message: "ticket has been ceated succesfully"}
     }
     else{
-        throw new Error('data error')
+        return ('data error')
     }
 
     
 })
-
 const confirmTicket = asyncHnadler(async(req,res)=> {
-    const {Bus_id} =req.body
-    const bus = await Bus.findById(Bus_id)
-    if (bus.capacity > 0) {
-        await Bus.findByIdAndUpdate(Bus_id, { $set: {capacity: bus.capacity -1 } })
-        res.json({message : "reserved seccesfully"})
-    }else{
-        throw new Error('this travel is already full')
+    // console.log(req.body);
+    const travel = await Travel.findById(req.body.travel_id).populate('Bus')
+    if (travel) {
+        if (travel.Seats_reserved < travel.Bus.capacity) {
+            const new_ticket =  await setTicket(req.body.travel_id,req.body.id_user)
+            console.log(new_ticket);
+            await Travel.findByIdAndUpdate(req.body.travel_id, { $set: {Seats_reserved: travel.Seats_reserved +1 } })
+            res.json({message : "reserved seccesfully"})
+        }else{
+            res.json({message : "this travel is alrady full"})
+        }
     }
+    // const {Bus_id} =req.body
+    // const bus = await Bus.findById(Bus_id)
+    // if (bus.capacity > 0) {
+    //     await Bus.findByIdAndUpdate(Bus_id, { $set: {capacity: bus.capacity -1 } })
+    //     res.json({message : "reserved seccesfully"})
+    // }else{
+    //     throw new Error('this travel is already full')
+    // }
 })
 
 

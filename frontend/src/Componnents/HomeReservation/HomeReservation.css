@@ -106,6 +106,17 @@
 .Booking_container .travels_found_container .travel_card .price {
   font-size: 18px;
   font-weight: 700;
+  margin-bottom: 10px;
+}
+.Booking_container .travels_found_container .travel_card .submit_travel {
+  background-color: #001BC7;
+  border: none;
+  color: white;
+  font-size: 18px;
+  padding: 10px 15px;
+  border-radius: 25px;
+  cursor: pointer;
+  margin-top: 10px;
 }
 @media (max-width: 768px) {
   .Booking_container .travels_found_container .travel_card .info {

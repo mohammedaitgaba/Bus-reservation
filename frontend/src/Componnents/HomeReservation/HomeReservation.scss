@@ -81,7 +81,12 @@
          }
          .price{
             font-size: 18px;
-            font-weight: 700
+            font-weight: 700;
+            margin-bottom: 10px;
+         }
+         .submit_travel{
+            @include button;
+            margin-top: 10px
          }
          @include tablet {
             .info{

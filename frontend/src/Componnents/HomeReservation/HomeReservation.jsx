@@ -1,5 +1,6 @@
 import { useState,useEffect } from 'react'
 import moment from 'moment';
+import {toast} from 'react-toastify';
 
 import './HomeReservation.css'
 function HomeReservation() {
@@ -16,8 +17,7 @@ var onresize = function() {
 }
 window.addEventListener("resize", onresize);
 
- 
-  const handleChange = (e)=>{
+const handleChange = (e)=>{
     setFormData((previousState)=>({
         ...previousState,
         [e.target.name] : e.target.value,
@@ -36,6 +36,29 @@ const searchTravel=async()=>{
       setTravels(prevArray => [...prevArray, element])
   })
   )
+}
+const Reserve_Travel = async(travel_id)=>{
+  const id_user = localStorage.getItem('user_id')
+  await fetch('  http://localhost:5000/api/ticket/confirmTicket',{
+    method: "POST",
+    headers: {
+        "Content-Type": "application/json"
+    },
+    body: JSON.stringify({travel_id,id_user})
+})
+.then(res=>res.json())
+.then(data=>{
+  if (data.message ==="reserved seccesfully") {
+    toast.success(`reserved seccesfully !`, {
+      position: toast.POSITION.TOP_CENTER
+  });
+  }
+  if (data.message ==="this travel is alrady full") {
+    toast.error(`travel is full!`, {
+      position: toast.POSITION.TOP_CENTER
+  });
+  }
+})
 }
   return (
     <section className='Booking_container'>
@@ -83,7 +106,7 @@ const searchTravel=async()=>{
                       <p> Date de depart : {moment(element.dateStart).format('L')+" "+moment(element.dateStart).format('LT')}</p>
                     </div>
                     {ScreenWidth>768?
-                      <i class="fal fa-arrow-from-left"></i>:<i class="fal fa-arrow-from-top"></i>
+                      <i className="fal fa-arrow-from-left"></i>:<i className="fal fa-arrow-from-top"></i>
                     } 
                     <div>
                       <p> Ville d'arrive : {element.cityEnd}</p>
@@ -96,6 +119,7 @@ const searchTravel=async()=>{
                   <div className='Bus'>
                     Bus : {element.Bus.name} 
                   </div>
+                  <button className='submit_travel' onClick={()=>Reserve_Travel(element._id)}>Reserver</button>
               </div>  
               )):null     
         }
