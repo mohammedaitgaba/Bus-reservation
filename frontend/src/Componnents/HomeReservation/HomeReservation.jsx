@@ -4,25 +4,36 @@ import {toast} from 'react-toastify';
 
 import './HomeReservation.css'
 function HomeReservation() {
-  const [formData,setFormData] = useState({
+
+const [formData,setFormData] = useState({
     cityStart:'',
     cityEnd:'',
-})
+  })
+const { cities } = require("list-of-moroccan-cities");
 const [jwtToken , setJwtToken]=useState(localStorage.getItem('token'))
 const [travels,setTravels] = useState([]) 
 const [ScreenWidth,setScreenWidth] = useState(document.body.clientWidth)
 
+
+// function that return size of the windows
 var onresize = function() {
   setScreenWidth(document.body.clientWidth)
 }
 window.addEventListener("resize", onresize);
 
+// handle inputes data and get values
 const handleChange = (e)=>{
-    setFormData((previousState)=>({
-        ...previousState,
-        [e.target.name] : e.target.value,
-    }))
+  setFormData((previousState)=>({
+      ...previousState,
+      [e.target.name] : e.target.value,
+}))
+    
 }
+// get current time using moment.js
+let now	= moment();
+let today = now.format('YYYY-MM-DD');
+
+
 const searchTravel=async()=>{
   await fetch(`http://localhost:5000/api/travel/${formData.cityStart}/${formData.cityEnd}`,{
     method: "Get",
@@ -69,21 +80,31 @@ const Reserve_Travel = async(travel_id)=>{
             <label htmlFor="">Ville de depart</label>
             <select className="form-select" name='cityStart' aria-label="Default select example" onChange ={handleChange}>
               <option selected disabled >--choisir ville</option>
-              <option value={"safi"} >safi</option>
+              {
+                cities?
+                cities.map((element,i)=> (
+                  <option key={i} value={element.name} > {element.name} </option>
+                )):null
+              }
             </select>
           </div>
 
           <div className='end_holder'>
             <label htmlFor="">Ville d'arrive</label>
             <select className="form-select" name='cityEnd' aria-label="Default select example" onChange ={handleChange}>
-              <option selected disabled >--choisir ville</option>
-              <option value={"tidas"} >tidas</option>
+            <option selected disabled >--choisir ville</option>
+              {
+                cities?
+                cities.map((element,i)=> (
+                  <option key={i} value={element.name} > {element.name} </option>
+                )):null
+              }
             </select>
           </div>
 
           <div className='time_holder'>
             <label htmlFor="date">Date depart</label>
-            <input type="date" id='date' />
+            <input type="date" id='date' min={today}/>
           </div>
         </div>
 

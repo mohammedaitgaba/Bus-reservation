@@ -1,5 +1,6 @@
 import {useState ,useEffect}  from "react";
 import {toast} from 'react-toastify';
+import moment from 'moment';
 import '../Sign_in/sign_in'
 const Popup =({Open,Close,getData}) => {
     const [Buses,setBuses] = useState([])
@@ -13,7 +14,12 @@ const Popup =({Open,Close,getData}) => {
         Bus:'',
         Price:'',
     })
+    const { cities } = require("list-of-moroccan-cities");
     const {cityStart,cityEnd,dateStart,dateEnd,Bus,Price}=formData
+
+    let now	= moment();
+    let today = now.format('YYYY-MM-DD');
+
     useEffect(()=>{ 
         getBuses()
         if (Open) {  
@@ -113,20 +119,55 @@ const Popup =({Open,Close,getData}) => {
                     <i className="fal fa-times-circle"  onClick={Close}></i>
                 </div>
                 <div className="form_body Registration">
-                    <input type="text" placeholder="ville depart" name="cityStart" value={cityStart} onChange={handleChange}/>
-                    <input type="text" placeholder="vill d'arrive" name="cityEnd" value={cityEnd} onChange ={handleChange}/>
-                    <input type="datetime-local"  name="dateStart" placeholder="ddd" value={dateStart} onChange={handleChange}/>
-                    <input type="datetime-local"  name="dateEnd" value={dateEnd} onChange={handleChange}/>
-                    <select onChange={handleChange} name="Bus" value={Bus} >
-                    {
-                        Buses?
-                        Buses.map((bus ,i)=>(
-                            <option key={i}  value={bus._id} >{bus.name}</option>
-                            
-                        )):null
-                    }
-                    </select>
-                    <input type="number" placeholder="Prix" name="Price" value={Price} onChange={handleChange}/>
+                    <div>
+                        <label htmlFor="">Ville depart </label>
+                        <select className="form-select" name='cityStart' value={cityStart}  aria-label="Default select example" onChange ={handleChange}>
+                        <option selected disabled >--choisir ville</option>
+                        {
+                            cities?
+                            cities.map((element,i)=> (
+                            <option key={i} value={element.name} > {element.name} </option>
+                            )):null
+                        }
+                        </select>
+                    </div>
+                    <div>
+                        <label htmlFor="">Ville d'arrive </label>
+                        <select className="form-select" name="cityEnd" value={cityEnd}  aria-label="Default select example" onChange ={handleChange}>
+                        <option selected disabled >--choisir ville</option>
+                        {
+                            cities?
+                            cities.map((element,i)=> (
+                            <option key={i} value={element.name} > {element.name} </option>
+                            )):null
+                        }
+                        </select>
+                    </div>
+                    {/* <input type="text" placeholder="vill d'arrive" name="cityEnd" value={cityEnd} onChange ={handleChange}/> */}
+                    <div>
+                        <label htmlFor="">Date depart </label>
+                        <input type="datetime-local"  name="dateStart" placeholder="ddd" min={today} value={dateStart} onChange={handleChange}/>
+                    </div>
+                    <div>
+                        <label htmlFor="">Date d'arrive </label>
+                        <input type="datetime-local"  name="dateEnd" value={dateEnd} min={formData.dateStart} onChange={handleChange}/>
+                    </div>
+                    <div>
+                        <label htmlFor="">Bus  </label>
+                        <select onChange={handleChange} name="Bus" value={Bus} >
+                        {
+                            Buses?
+                            Buses.map((bus ,i)=>(
+                                <option key={i}  value={bus._id} >{bus.name}</option>
+                                
+                            )):null
+                        }
+                        </select>
+                    </div>
+                    <div>
+                        <label htmlFor="">Prix </label>
+                        <input type="number" placeholder="Prix" name="Price" value={Price} onChange={handleChange}/>
+                    </div>
                 </div>
                 <div className="form_submit">
                     <button type="button" onClick={AddTravel}> Ajoute</button>
@@ -147,6 +188,59 @@ const Popup =({Open,Close,getData}) => {
                     <i className="fal fa-times-circle"  onClick={Close}></i>
                 </div>
                 <div className="form_body Registration">
+                    <div>
+                        <label htmlFor="">Ville depart </label>
+                        {/* <input type="text" placeholder="ville depart" name="cityStart" value={cityStart} onChange={handleChange}/> */}
+                        <select className="form-select" name='cityStart' value={cityStart}  aria-label="Default select example" onChange ={handleChange}>
+                        <option selected disabled >--choisir ville</option>
+                        {
+                            cities?
+                            cities.map((element,i)=> (
+                            <option key={i} value={element.name} > {element.name} </option>
+                            )):null
+                        }
+                        </select>
+                    </div>
+                    <div>
+                        <label htmlFor="">Ville d'arrive </label>
+                        {/* <input type="text" placeholder="ville depart" name="cityStart" value={cityStart} onChange={handleChange}/> */}
+                        <select className="form-select" name="cityEnd" value={cityEnd}  aria-label="Default select example" onChange ={handleChange}>
+                        <option selected disabled >--choisir ville</option>
+                        {
+                            cities?
+                            cities.map((element,i)=> (
+                            <option key={i} value={element.name} > {element.name} </option>
+                            )):null
+                        }
+                        </select>
+                    </div>
+                    {/* <input type="text" placeholder="vill d'arrive" name="cityEnd" value={cityEnd} onChange ={handleChange}/> */}
+                    <div>
+                        <label htmlFor="">Date depart </label>
+                        <input type="datetime-local"  name="dateStart" placeholder="ddd" value={dateStart} onChange={handleChange}/>
+                    </div>
+                    <div>
+                        <label htmlFor="">Date d'arrive </label>
+                        <input type="datetime-local"  name="dateEnd" value={dateEnd} onChange={handleChange}/>
+                    </div>
+                    <div>
+                        <label htmlFor="">Bus  </label>
+                        <select onChange={handleChange} name="Bus" value={Bus} >
+                        {
+                            Buses?
+                            Buses.map((bus ,i)=>(
+                                <option key={i}  value={bus._id} >{bus.name}</option>
+                                
+                            )):null
+                        }
+                        </select>
+                    </div>
+                    <div>
+                        <label htmlFor="">Prix </label>
+                        <input type="number" placeholder="Prix" name="Price" value={Price} onChange={handleChange}/>
+                    </div>
+                </div>
+                {/* <div className="form_body Registration">
                     <input type="text" placeholder="ville depart" name="cityStart" value={cityStart} onChange={handleChange}/>
                     <input type="text" placeholder="vill d'arrive" name="cityEnd" value={cityEnd} onChange ={handleChange}/>
                     <input type="datetime-local" name="dateStart" value={dateStart} onChange={handleChange}/>
@@ -160,7 +254,7 @@ const Popup =({Open,Close,getData}) => {
                     }
                     </select>
                     <input type="number" placeholder="Prix" name="Price" value={Price} onChange={handleChange}/>
-                </div>
+                </div> */}
                 <div className="form_submit">
                     <button type="button" onClick={()=> UpdateTravel()}> Update Travel</button>
                 </div>

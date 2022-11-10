@@ -26,6 +26,16 @@
   font-size: 28px;
   font-weight: 600;
 }
+@media (max-width: 768px) {
+  .Sign_in_holder .sign_in_form {
+    width: 70vw;
+  }
+}
+@media (max-width: 480px) {
+  .Sign_in_holder .sign_in_form {
+    width: 95vw;
+  }
+}
 .Sign_in_holder .Register_form {
   height: 80vh;
 }
@@ -45,8 +55,18 @@
   width: 80%;
   height: 50%;
 }
-.Sign_in_holder .form_body input, .Sign_in_holder .form_body select {
+.Sign_in_holder .form_body div {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
   width: 100%;
+}
+.Sign_in_holder .form_body div label {
+  width: 30%;
+}
+.Sign_in_holder .form_body input, .Sign_in_holder .form_body select {
+  width: 80%;
   padding: 10px;
   border-radius: 10px;
   border: 1px solid gray;

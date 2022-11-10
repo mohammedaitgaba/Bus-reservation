@@ -19,6 +19,13 @@
             font-size: 28px;
             font-weight: 600;
         }
+        @include tablet {
+            width: 70vw;
+
+        }
+        @include phone {
+            width: 95vw;
+        }
     }
     .Register_form{
         height: 80vh;
@@ -36,8 +43,15 @@
         @include flexColumn(center,space-evenly);
         width: 80%;
         height: 50%;
-        input,select{
+        div{
+            @include flexRow(center,space-between);
             width: 100%;
+            label{
+                width: 30%;
+            }
+        }
+        input,select{
+            width: 80%;
             padding: 10px;
             border-radius: 10px;
             border:1px solid gray;
