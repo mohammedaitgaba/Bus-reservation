@@ -29,3 +29,14 @@ Cette solution fait recours aux matériels informatiques et aux logiciels approp
 | GET | http://localhost:5000/api/ticket | getTicket |
 | POST | http://localhost:5000/api/ticket | setTicket |
 | DELETE | http://localhost:5000/api/ticket/:id | deleteTicket (soft delete) |
+
+## Travel Endpoints
+
+| Method    | Endpoint     | Description                |
+| :-------- | :------- | :------------------------- |
+| GET | http://localhost:5000/api/travel/all | getAllTravels |
+| GET | http://localhost:5000/api/travel/city1/city2 | getTravelByCitySelected |
+| POST | http://localhost:5000/api/travel | setTravel |
+| POST | http://localhost:5000/api/travel/findTravel| FindTravelById |
+| Put | http://localhost:5000/api/travel/:id | UpdateTravel |
+| DELETE | http://localhost:5000/api/travel/:id | deleteTravel(soft delete) |
