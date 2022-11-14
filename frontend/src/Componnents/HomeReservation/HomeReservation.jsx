@@ -15,7 +15,7 @@ const { cities } = require("list-of-moroccan-cities");
 const [jwtToken , setJwtToken]=useState(localStorage.getItem('token'))
 const [travels,setTravels] = useState([]) 
 const [ScreenWidth,setScreenWidth] = useState(document.body.clientWidth)
-
+const [messageNoTravels,setMessageNoTravels] = useState('')
 
 // function that return size of the windows
 var onresize = function() {
@@ -45,35 +45,48 @@ const searchTravel=async()=>{
     },
   })
   .then(res => res.json())
-  .then(data=> data.travel.forEach(element => {
-      console.log(element);
+  .then(data=> { 
+    if (data.message ==="Travel not found") {
+      setMessageNoTravels(data.message)
+    }else{
+      setMessageNoTravels("")
+      data.travel.forEach(element => {
+        console.log(element);
       setTravels(prevArray => [...prevArray, element])
-  })
+    })
+    }
+}
   )
 }
 const Reserve_Travel = async(travel_id)=>{
   const id_user = localStorage.getItem('user_id')
-  await fetch('  http://localhost:5000/api/ticket/confirmTicket',{
-    method: "POST",
-    headers: {
-        "Content-Type": "application/json"
-    },
-    body: JSON.stringify({travel_id,id_user})
-})
-.then(res=>res.json())
-.then(data=>{
-  if (data.message ==="reserved seccesfully") {
-    toast.success(`reserved seccesfully !`, {
+  if (id_user) { 
+    await fetch('  http://localhost:5000/api/ticket/confirmTicket',{
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify({travel_id,id_user})
+    })
+    .then(res=>res.json())
+    .then(data=>{
+      if (data.message ==="reserved seccesfully") {
+        toast.success(`reserved seccesfully !`, {
+          position: toast.POSITION.TOP_CENTER
+      });
+      generatePDF()
+      }
+      if (data.message ==="this travel is alrady full") {
+        toast.error(`travel is full!`, {
+          position: toast.POSITION.TOP_CENTER
+      });
+      }
+    })
+  }else{
+    toast.info(`Please sign in to continue`, {
       position: toast.POSITION.TOP_CENTER
   });
-  generatePDF()
   }
-  if (data.message ==="this travel is alrady full") {
-    toast.error(`travel is full!`, {
-      position: toast.POSITION.TOP_CENTER
-  });
-  }
-})
 }
 const generatePDF = () => {
 
@@ -123,6 +136,14 @@ const generatePDF = () => {
           Recherche
         </div>
       </div>
+      {
+        messageNoTravels?
+        <div style={{display:"flex", padding:"30px", alignItems:"center"}}>
+            <h2>Aucun voyage trouvé</h2>
+            <i className="fal fa-frown" style={{'font-size':"24px",marginLeft:'15px'}}></i>
+        </div>:null
+      }
+
         {
           travels.length != 0? <h2>Voyage disponible</h2> : null
         }

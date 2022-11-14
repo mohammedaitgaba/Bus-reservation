@@ -43,12 +43,12 @@ const onlyAdmin = asyncHnadler(async (req,res,next)=>{
             next()
         } catch (error) {
             res.status(401)
-            throw new Error('not authorized')
+            throw new Error('error not authorized')
         }
     }
     if (!token) {
         res.status(401)
-        throw new Error('no token, no authorization')
+        throw new Error('yo silly, you are not authorized')
     }
 } )
-module.exports ={protect}
+module.exports ={protect,onlyAdmin}

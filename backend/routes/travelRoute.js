@@ -1,6 +1,6 @@
 const express = require('express')
 const router = express.Router()
-const {protect} = require('../middleware/authMiddlware')
+const {protect,onlyAdmin} = require('../middleware/authMiddlware')
 
 const { 
     getAllTravels,
@@ -12,10 +12,10 @@ const {
     // newBreakCity
  } = require('../controllers/travelController')
 
-router.route('/').get(getAllTravels).post(setTravel)
-router.post('/findTravel',getTravelById)
-router.route('/:cityStart/:cityEnd').get(checkTravel)
-router.route('/:id').put(updateTravel).delete(deleteTravel)
+router.route('/all').get(onlyAdmin,getAllTravels).post(onlyAdmin,setTravel)
+router.post('/findTravel',onlyAdmin,getTravelById)
+router.route('/:cityStart/:cityEnd').get(protect,checkTravel)
+router.route('/:id').put(onlyAdmin,updateTravel).delete(onlyAdmin,deleteTravel)
 // .post(newBreakCity)
 
 module.exports = router

@@ -16,12 +16,11 @@ function Travel() {
 
     useEffect(()=>{ 
         getTravels()
-
     },[])
 
     const getTravels = async()=>{
         setTravels([])
-        await fetch('http://localhost:5000/api/travel',{
+        await fetch('http://localhost:5000/api/travel/all',{
             method: "Get",
             headers: {
                 "Authorization":"Bearer "+jwtToken+""
@@ -39,7 +38,8 @@ function Travel() {
         fetch(`http://localhost:5000/api/travel/${id}`,{
             method: "DELETE",
             headers: {
-                "Content-Type": "application/json"
+                "Content-Type": "application/json",
+                "Authorization":"Bearer "+jwtToken+""
             },
         }).then(res=>res.json())
         .then(out=>{

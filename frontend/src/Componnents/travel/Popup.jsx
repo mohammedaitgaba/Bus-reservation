@@ -5,6 +5,7 @@ import '../Sign_in/sign_in'
 const Popup =({Open,Close,getData}) => {
     const [Buses,setBuses] = useState([])
     const [travelinfo,setTravelinfo] = useState([])
+    const [jwtToken , setJwtToken]=useState(localStorage.getItem('token'))
     const [formData,setFormData] = useState({
         // id:"",
         cityStart:'',
@@ -31,6 +32,9 @@ const Popup =({Open,Close,getData}) => {
         setBuses([])
         await fetch('http://localhost:5000/api/bus',{
             method: "Get",
+            headers: {
+                "Authorization":"Bearer "+jwtToken+""
+            },
         })
         .then(res => res.json())
         // .then(out=>console.log(out.bus))
@@ -43,7 +47,8 @@ const Popup =({Open,Close,getData}) => {
         await fetch('http://localhost:5000/api/travel/findTravel',{
             method: "POST",
             headers: {
-                "Content-Type": "application/json"
+                "Content-Type": "application/json",
+                "Authorization":"Bearer "+jwtToken+""
             },
             body: JSON.stringify({id})
         }).then(res =>res.json())
@@ -68,10 +73,11 @@ const Popup =({Open,Close,getData}) => {
         }))
     }
     const AddTravel =()=>{
-        fetch('http://localhost:5000/api/travel',{
+        fetch('http://localhost:5000/api/travel/all',{
             method: "POST",
             headers: {
-                "Content-Type": "application/json"
+                "Content-Type": "application/json",
+                "Authorization":"Bearer "+jwtToken+""
             },
             body: JSON.stringify(formData)
         })
@@ -92,7 +98,9 @@ const Popup =({Open,Close,getData}) => {
         fetch(`http://localhost:5000/api/travel/${id}`,{
             method: "PUT",
             headers: {
-                "Content-Type": "application/json"
+                "Content-Type": "application/json",
+                "Authorization":"Bearer "+jwtToken+""
+
             },
             body: JSON.stringify(formData)
         }).then(res=>res.json())
