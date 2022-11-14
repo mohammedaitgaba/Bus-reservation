@@ -73,6 +73,11 @@ const Popup =({Open,Close,getData}) => {
         }))
     }
     const AddTravel =()=>{
+        if (!cityStart || !cityEnd || !dateStart || !dateEnd || !Bus || !Price) {
+            toast.warning(`veuillez remplir les champs obligatoires!`, {
+              position: toast.POSITION.TOP_CENTER
+          });
+          }
         fetch('http://localhost:5000/api/travel/all',{
             method: "POST",
             headers: {
@@ -94,25 +99,32 @@ const Popup =({Open,Close,getData}) => {
         })
     }
     const UpdateTravel=()=>{
-        const id = Open
-        fetch(`http://localhost:5000/api/travel/${id}`,{
-            method: "PUT",
-            headers: {
-                "Content-Type": "application/json",
-                "Authorization":"Bearer "+jwtToken+""
-
-            },
-            body: JSON.stringify(formData)
-        }).then(res=>res.json())
-        .then(data=>{
-            if (data.updatedtravel) {
-                Close()
-                getData()
-                toast.success(`Updated succesfully !`, {
-                    position: toast.POSITION.TOP_CENTER
-                });
-            }
-        })
+        if (!cityStart || !cityEnd || !dateStart || !dateEnd || !Bus || !Price) {
+            toast.warning(`veuillez remplir les champs obligatoires!`, {
+              position: toast.POSITION.TOP_CENTER
+          });
+        }
+        else{
+            const id = Open
+            fetch(`http://localhost:5000/api/travel/${id}`,{
+                method: "PUT",
+                headers: {
+                    "Content-Type": "application/json",
+                    "Authorization":"Bearer "+jwtToken+""
+    
+                },
+                body: JSON.stringify(formData)
+            }).then(res=>res.json())
+            .then(data=>{
+                if (data.updatedtravel) {
+                    Close()
+                    getData()
+                    toast.success(`Updated succesfully !`, {
+                        position: toast.POSITION.TOP_CENTER
+                    });
+                }
+            })
+        }
     }
 
     if (!Open) return null

@@ -39,6 +39,11 @@ const handleChange = (e)=>{
 }
 const {bus_name,capacity}=formData
 const AddBus =()=>{
+  if (!formData.name || !formData.capacity) {
+    toast.warning(`veuillez remplir les champs obligatoires!`, {
+      position: toast.POSITION.TOP_CENTER
+  });
+  }
   fetch('http://localhost:5000/api/bus',{
       method: "POST",
       headers: {
@@ -62,7 +67,7 @@ const AddBus =()=>{
         <form action="">
           <input type="text" placeholder='Bus nom' name='name' value={bus_name} onChange={handleChange} />
           <input type="number" placeholder='capacite' name='capacity' min={0} value={capacity} onChange={handleChange}/>
-          <button onClick={()=> AddBus()}>Ajoute bus</button> 
+          <button type='button' onClick={()=> AddBus()}>Ajoute bus</button> 
         </form>
       </div>
       <section className='All_bus'>

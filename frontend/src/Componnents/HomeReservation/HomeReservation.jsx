@@ -37,6 +37,11 @@ let today = now.format('YYYY-MM-DD');
 
 
 const searchTravel=async()=>{
+  if (!formData.cityStart || !formData.cityEnd) {
+    toast.warning(`veuillez remplir les champs obligatoires!`, {
+      position: toast.POSITION.TOP_CENTER
+  });
+  }
   setTravels([])
   await fetch(`http://localhost:5000/api/travel/${formData.cityStart}/${formData.cityEnd}`,{
     method: "Get",
