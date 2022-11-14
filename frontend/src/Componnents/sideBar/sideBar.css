@@ -29,6 +29,10 @@
 .sideContainer .sidelinks i {
   margin-right: 10px;
 }
+.sideContainer .sidelinks_active {
+  color: #001BC7;
+  font-weight: 600;
+}
 @media (max-width: 768px) {
   .sideContainer .links_container {
     width: 100%;

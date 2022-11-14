@@ -1,10 +1,14 @@
 import {useState ,useEffect}  from "react";
 import {toast} from 'react-toastify';
+import { useNavigate } from "react-router-dom"
+
 // import {useLocation, useNavigate} from "react-router-dom";
 
 import './sign_in.css'
 
 const Sign_in = ({Open,Close})=>{
+    const navigate = useNavigate()
+
     const [IsRegister,setRegister] = useState(false)
     const [error_message,setError_message] = useState('')
     const ToRegister =()=>{
@@ -84,6 +88,8 @@ const Sign_in = ({Open,Close})=>{
                         position: toast.POSITION.TOP_CENTER
                     });
                     Close()
+                    navigate(`/Dushboard`)
+                    window.location.reload();   
                 }
                 else{
                     toast.error('Invalid info!', {

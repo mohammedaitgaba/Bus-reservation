@@ -22,8 +22,7 @@ const getTicket = async()=>{
 }
 
   return (
-    <div>
-
+    <div className='Reservation_container' style={{padding:'30px',overflow:'auto'}}>
         <table className="table">
             <thead>
                 <tr>

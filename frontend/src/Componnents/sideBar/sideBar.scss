@@ -20,6 +20,10 @@
             margin-right: 10px;
         }
     }
+    .sidelinks_active{
+        color: $mainColor;
+        font-weight: 600;
+    }
     @include tablet {
         .links_container{
             width: 100%;
