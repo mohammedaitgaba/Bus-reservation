@@ -1,10 +1,14 @@
-import React from 'react'
+import {useRef} from 'react';
 import "./WhyUs.css"
 function WhyUs() {
+    const ref = useRef(null);
+    const handleClick = () => {
+        ref.current?.scrollIntoView({behavior: 'smooth'});
+      };
   return (
-    <div>
+    <div ref={ref}>
         <section className='Why_us_Holder'>
-            <div className="WhyUs_title">
+            <div className="WhyUs_title" >
             Pourquoi voyager avec nous
             </div>
             <div className="Cards">
@@ -53,7 +57,7 @@ function WhyUs() {
                 vous permet de planifier votre voyage autour des meilleurs itinéraires 
                 aux prix de location de bus les moins chers.
             </div>
-            <div className="submit_pub">
+            <div className="submit_pub" onClick={handleClick}>
                 Reserver
             </div>
       </section>
